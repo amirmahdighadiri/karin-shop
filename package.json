@@ -1,6 +1,6 @@
 {
   "name": "carin-shope",
-  "homepage": "https://amirmahdighadiri.github.io/karin-shop/",
+  "homepage": "https://amirmahdighadiri.github.io/karin-shop",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,7 +11,9 @@
     "preview": "vite preview",
     "db": "json-server --watch db.json",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "update": "git add . && git commit -m \"auto update\" && git push origin main && npm run deploy"
+
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
