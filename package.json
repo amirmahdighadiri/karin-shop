@@ -15,6 +15,7 @@
     "update": "git add . && git commit -m \"auto update\" && git push origin main && npm run deploy"
 
   },
+
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
     "gh-pages": "^6.3.0",
