@@ -27,7 +27,7 @@ import ArticleBox from "../../components/ArticleBox/ArticleBox.jsx";
 
 function Home() {
     const [popularCategory, setPopularCategory] = useState(category);
-    const [popularProducts, setPopularProducts] = useState(prodcuts);
+    const [popularProducts, setPopularProducts] = useState([]);
     const [brandsItem, setBrandsItem] = useState(brands);
     const [articlesItem, setArticlesItem] = useState(articles);
     const [isBeginning, setIsBeginning] = useState(true);
@@ -45,6 +45,10 @@ function Home() {
 
     const [time, setTime] = useState(calculateRemainig());
 
+    useEffect(()=>{
+        console.log(1)
+        fetch("https://karin-shop-db.onrender.com/products").then((res)=> res.json()).then(data => setPopularProducts(data))
+    },[])
 
     useEffect(() => {
         if (time <= 0) return
@@ -55,6 +59,10 @@ function Home() {
 
         return () => clearInterval(timer)
     }, [time])
+
+    useEffect(() => {
+        console.log(popularProducts)
+    },[popularProducts])
 
     const formatTime = (second) => {
         const days = String(Math.floor(second / (1000 * 60 * 60 * 24))).padStart(2, '0')
