@@ -105,7 +105,7 @@ function Footer(props) {
                 <div className="flex flex-col md:flex-row gap-y-4 items-center justify-between p-4 md:p-6 rounded-xl bg-gray-950 dark:bg-gray-900 mt-6">
                     <Link to="/" className="text-3xl font-Morabba">
                         <span className="text-blue-500"> کارین </span>
-                        <span className="text-gray-900 dark:text-white">شاپ</span>
+                        <span className="text-white">شاپ</span>
                     </Link>
                     {/* ! ================== ! Btn ! ================== ! */}
                     <div className="flex items-center justify-between w-72 lg:w-88 p-2.5 bg-gray-900 dark:bg-gray-800 rounded-xl">

@@ -26,12 +26,11 @@ function Menu(props) {
                             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12"></path>
                         </svg>
                     </div>
-
                 </div>
                 {/* ! ================== ! Menu ! ================== ! */}
                 <nav className="mt-4 lg:mt-0">
                     {/* ! ================== ! Menu  ! ================== ! */}
-                    <ul className="flex flex-col lg:flex-row lg:items-center gap-x-8 gap-y-6 text-gray-100">
+                    <ul className="flex flex-col lg:flex-row lg:items-center gap-x-8 gap-y-6 text-gray-100 max-lg:text-gray-800 max-lg:dark:text-gray-100">
                         {/* ! ================== ! Mobile Menu Item  ! ================== ! */}
                         <li className="flex lg:hidden items-center gap-x-1">
                             <svg xmlns="http://www.w3.org/2000/svg" id="squares" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-5" viewBox="0 0 24 24">
