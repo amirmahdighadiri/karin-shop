@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import Tooltip from "../Tooltip/Tooltip.jsx";
 
 function SecondProductBox({title, price, dicountPercent, score, todaySend, src,hoverSrc}) {
+    console.log(import.meta.env.BASE_URL)
     return (
         <div className="h-full bg-white dark:bg-gray-800 px-4 pt-3 pb-2 rounded-xl shadow-lg group/image">
             {/* ! ================== ! TopBox ! ================== ! */}
@@ -31,7 +32,7 @@ function SecondProductBox({title, price, dicountPercent, score, todaySend, src,h
             </div>
             {/* ! ================== ! Product Image ! ================== ! */}
             <Link to="/" className="flex-center *:transition-all *:duration-500">
-                <img src={`${import.meta.env.BASE_URL}${src}`} alt="" className="w-36 h-32 sm:w-44 lg:w-60 lg:h-52 object-cover opacity-100 group-hover/image:opacity-0 absolute" loading={"lazy"}/>
+                <img src={`/karin-shop/${src}`} alt={title} className="w-36 h-32 sm:w-44 lg:w-60 lg:h-52 object-cover opacity-100 group-hover/image:opacity-0 absolute" loading={"lazy"}/>
                 <img src={hoverSrc} alt="" className="w-36 h-32 sm:w-44 lg:w-60 lg:h-52 object-cover opacity-0 group-hover/image:opacity-100" loading={"lazy"}/>
             </Link>
             {/* ! ================== ! Product Title ! ================== ! */}
