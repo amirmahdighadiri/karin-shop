@@ -14,7 +14,7 @@ function ProductBox({title, price, dicountPercent, score, todaySend, src}) {
                     <span className="text-xs pt-1">ارسال امروز</span>
                 </div>
                 <div className="flex items-center gap-x-0.5 text-gray-400">
-                    <span className="text-sm pt-1">5.0</span>
+                    <span className="text-sm pt-1">{score}</span>
                     <svg xmlns="http://www.w3.org/2000/svg" id="star" fill="none" stroke="currentColor"
                          strokeWidth="1.5" className="size-4" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round"
@@ -24,7 +24,7 @@ function ProductBox({title, price, dicountPercent, score, todaySend, src}) {
             </div>
             {/* ! ================== ! Product Image ! ================== ! */}
             <Link to="/" className="flex-center">
-                <img src={src} alt="" className="w-44 h-32 object-cover" loading={"lazy"}/>
+                <img src={`${import.meta.env.BASE_URL}${src}`} alt="" className="w-44 h-32 object-cover" loading={"lazy"}/>
             </Link>
             {/* ! ================== ! Product Title ! ================== ! */}
             <Link to="/" className="text-gray-700 dark:text-gray-300 text-sm line-clamp-2 mt-1">
@@ -32,14 +32,13 @@ function ProductBox({title, price, dicountPercent, score, todaySend, src}) {
             </Link>
             {/* ! ================== ! Product Price Wrapper ! ================== ! */}
             <div className="flex items-center justify-between text-zinc-900 dark:text-zinc-100 pt-4 border-t-2 dark:border-gray-700 border-gray-200 mt-2">
-                <div
-                    className="h-6 w-10 inline-flex items-center justify-center bg-blue-500 text-white rounded-xl text-xs pt-1">
-                    70%
+                <div className="h-6 w-10 inline-flex items-center justify-center bg-blue-500 text-white rounded-xl text-xs pt-1">
+                    {dicountPercent}%
                 </div>
                 <span className="flex items-center gap-x-1 text-lg">
-                                        13,000,000
-                                        <span className="text-xs">تومان</span>
-                                    </span>
+                    {String(price).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                    <span className="text-xs">تومان</span>
+                </span>
             </div>
         </div>
     );

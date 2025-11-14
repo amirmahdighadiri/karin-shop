@@ -1,14 +1,14 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {Link} from "react-router-dom";
 
-function SectionTitle({title, blueTitle , description , children , nextBtn , prevBtn}) {
+function SectionTitle({title, blueTitle , description , IconComponent}) {
     return (
         <div className="flex flex-col sm:flex-row sm:items-center gap-y-4 justify-between">
             {/* ! ================== ! Title Content ! ================== ! */}
             <div className="flex items-center max-sm:justify-center gap-x-2 sm:gap-x-4 text-gray-800 dark:text-gray-50">
                 {/* ! ================== ! Title Icon ! ================== ! */}
                 <div className="size-12 flex-center rounded-lg shadow-lg bg-white dark:bg-gray-800">
-                    {children}
+                    {IconComponent && <IconComponent/>}
                 </div>
                 {/* ! ================== ! Title Text ! ================== ! */}
                 <div className="">
@@ -29,31 +29,9 @@ function SectionTitle({title, blueTitle , description , children , nextBtn , pre
                          </svg>
                     </span>
                 </Link>
-                {/* ! ================== ! Swiper Custom Navigation ! ================== ! */}
-
-                {
-                    nextBtn && prevBtn ?  <div className="w-full flex items-center gap-x-2">
-                        <button className={`${prevBtn} size-10 flex-center dark:bg-gray-800 bg-white rounded-lg dark:text-white text-gray-800  transition-all shadow-lg cursor-pointer`} >
-                            <svg xmlns="http://www.w3.org/2000/svg" id="chevron" fill="none" stroke="currentColor"
-                                 strokeWidth="1.5" className="-rotate-90 size-6 transition-all" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round"
-                                      d="m19.5 8.25-7.5 7.5-7.5-7.5"></path>
-                            </svg>
-                        </button>
-                        <button className={`${nextBtn} size-10 flex-center dark:bg-gray-800 bg-white rounded-lg dark:text-white text-gray-800  transition-all shadow-lg cursor-pointer`} >
-                            <svg xmlns="http://www.w3.org/2000/svg" id="chevron" fill="none" stroke="currentColor"
-                                 strokeWidth="1.5" className="rotate-90 size-6 transition-all" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round"
-                                      d="m19.5 8.25-7.5 7.5-7.5-7.5"></path>
-                            </svg>
-
-                        </button>
-                    </div> : null
-                }
-
             </div>
         </div>
     );
 }
 
-export default SectionTitle;
+export default memo(SectionTitle);

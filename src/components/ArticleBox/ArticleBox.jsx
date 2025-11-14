@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {Link} from "react-router-dom";
 
 function ArticleBox({title , src, viweCount, createAT}) {
@@ -6,7 +6,7 @@ function ArticleBox({title , src, viweCount, createAT}) {
         <div className="p-2 bg-white dark:bg-gray-800 rounded-lg shadow-sm group">
             {/* ! ================== ! Article Image & Effect ! ================== ! */}
             <div className="relative rounded-lg rounded-tr-3xl rounded-bl-3xl overflow-hidden">
-                <img src={src} alt="article" className="" loading={"lazy"}/>
+                <img src={`${import.meta.env.BASE_URL}${src}`} alt="article" className="" loading={"lazy"}/>
                 <div className="absolute inset-0 flex-center bg-black/60 opacity-0 group-hover:opacity-100 transition-all cursor-pointer">
                     <Link to="/" className="flex items-center font-Dana-Medium rounded-lg border-2 border-white text-white px-2 py-1">
                         <span className="">ادامه مطالب</span>
@@ -43,4 +43,4 @@ function ArticleBox({title , src, viweCount, createAT}) {
     );
 }
 
-export default ArticleBox;
+export default memo(ArticleBox);
