@@ -3,7 +3,6 @@ import {Link} from "react-router-dom";
 import Tooltip from "../Tooltip/Tooltip.jsx";
 
 function SecondProductBox({title, price, dicountPercent, score, todaySend, src,hoverSrc}) {
-    console.log(1)
     return (
         <div className="h-full bg-white dark:bg-gray-800 px-4 pt-3 pb-2 rounded-xl shadow-lg group/image">
             {/* ! ================== ! TopBox ! ================== ! */}

@@ -24,7 +24,7 @@ function LoginPopup({title, description,children}) {
                 {/* ! ================== ! Popup Content  ! ================== ! */}
                 {children}
                 <span className="block mt-5 mb-4 font-Dana-DemiBold text-3xl">{title}</span>
-                <span className="font-Dana-DemiBold">{description}</span>
+                <span className="font-Dana-DemiBold text-center">{description}</span>
                 {/* ! ================== ! Popup Btn  ! ================== ! */}
                 <button onClick={redirectUserToHomePage} type="submit" className="px-4 py-2 text-white bg-blue-600/70 rounded-md mt-5 cursor-pointer">باشه</button>
             </div>

@@ -1,4 +1,4 @@
-import {Link, useParams} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import {productLiveTexts, services} from "../../data.jsx"
 import React, {useEffect, useState} from "react";
 import Tooltip from "../../components/Tooltip/Tooltip.jsx";
@@ -11,8 +11,9 @@ import SecondProductBox from "../../components/ProductBox/SecondProductBox.jsx";
 import CommentBox from "../../components/CommentBox/CommentBox.jsx";
 import DynamicIcon from "../../icon/DynamicIcon.jsx";
 import CustomSwiperBtn from "../../components/CustomSwiperBtn/CustomSwiperBtn.jsx";
-import LiveText from "../../components/LiveText.jsx";
+import LiveText from "../../components/LiveText/LiveText.jsx";
 import CommentForm from "../../components/Forms/CommentForm.jsx";
+import LoginPopup from "../../components/Popups/LoginPopup.jsx";
 
 function ProductInfo(props) {
     const [liveText, setLiveText] = useState(productLiveTexts);
@@ -29,6 +30,9 @@ function ProductInfo(props) {
     const [comments, setComments] = useState([]);
     const [visibleCount, setVisibleCount] = useState(5);
     const [isExpanded, setIsExpanded] = useState(false);
+    const [userId , setUserId] = useState(()=> localStorage.getItem('userID'));
+    const navigate = useNavigate();
+    const [isShowPopup, setIsShowPopup] = useState(false);
 
 
     useEffect(() => {
@@ -77,6 +81,29 @@ function ProductInfo(props) {
                 return newCount
             })
         }
+    }
+    const addToCartHandler = async (event)=>{
+        event.preventDefault()
+        if (userId){
+            const cart = await fetch('https://karin-shop-db.onrender.com/cart')
+            const data = await cart.json()
+
+            const newCartItem = {
+                id: data.length,
+                userId : userId,
+                productId : id,  // product id ( get =>  line 21 )
+                quantity: productCount,
+                colorCode : productColorInfo.colorCode,
+                colorName: productColorInfo.name,
+                warranty: "گارانتی 18 ماهه",
+                deliveryTime: "ارسال 1 روز کاری"
+            }
+
+        } else {
+            setIsShowPopup(true)
+            // navigate('/auth-layout/login')
+        }
+
     }
 
 
@@ -278,7 +305,7 @@ function ProductInfo(props) {
                     {/* ! ================== ! Live Message ! ================== ! */}
                     <LiveText text={liveText}/>
                     {/* ! ================== ! Order Completion Button ! ================== ! */}
-                    <button type="button" className="flex items-center justify-center gap-x-1 w-full bg-blue-500 hover:bg-blue-600 text-gray-100 rounded-lg shadow py-2 transition-all">
+                    <button type="button" onClick={addToCartHandler} className="flex items-center justify-center gap-x-1 w-full bg-blue-500 hover:bg-blue-600 text-gray-100 rounded-lg shadow py-2 cursor-pointer transition-all">
                         <span className="">افزودن به سبد</span>
                         <svg xmlns="http://www.w3.org/2000/svg" id="shopping-bag" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-4" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007M8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0m7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0"></path>
@@ -410,6 +437,27 @@ function ProductInfo(props) {
                     </div>}
                 </div>
             </div>
+
+            {
+                isShowPopup && <LoginPopup title="خطا !" description="برای افزودن محصول به سبد خرید لازم است وارد حساب خود باشید.">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-18 text-red-500">
+                        <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z" clipRule="evenodd" />
+                    </svg>
+                </LoginPopup>
+            }
+            {/*<div className="fixed inset-0 w-full h-full flex-center z-10 bg-black/60 backdrop-blur-xs">*/}
+            {/*    /!* ! ================== ! Popup Box  ! ================== ! *!/*/}
+            {/*    <div className="w-100 flex flex-col items-center justify-center px-4 bg-gray-300 dark:bg-gray-900 text-gray-800 dark:text-gray-300 rounded-md py-4">*/}
+            {/*        /!* ! ================== ! Popup Content  ! ================== ! *!/*/}
+            {/*        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-18 text-red-500">*/}
+            {/*            <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z" clipRule="evenodd" />*/}
+            {/*        </svg>*/}
+            {/*        <span className="block mt-5 mb-4 font-Dana-DemiBold text-3xl">خطا !</span>*/}
+            {/*        <span className="font-Dana-DemiBold text-center">برای افزودن محصول به سبد خرید لازم است وارد حساب خود باشید.</span>*/}
+            {/*        /!* ! ================== ! Popup Btn  ! ================== ! *!/*/}
+            {/*        <button type="submit" className="px-4 py-2 text-white bg-blue-600/70 rounded-md mt-5 cursor-pointer">باشه</button>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
         </section>
     );
 }
