@@ -12,6 +12,7 @@ function AppProvider({children}) {
     const [isRegister, setIsRegister] = useState(false);
     const [isOpenFilterBox, setIsOpenFilterBox] = useState(false);
     const [isOpenSortBox, setIsOpenSortBox] = useState(false);
+    const [lastUrl, setLastUrl] = useState("");
 
     const [theme, setTheme] = useState(() => {
         const savedTheme = localStorage.getItem("theme");
@@ -28,7 +29,7 @@ function AppProvider({children}) {
             overlay, setOverlay, isShowCityBox,
             setIsShowCityBox,isShowResultSearchBox, setIsShowResultSearchBox,openMenu, setOpenMenu ,
             theme, setTheme,isOpenLoginPopup, setIsOpenLoginPopup,isResetInput, setIsResetInput ,isRegister, setIsRegister,isOpenFilterBox, setIsOpenFilterBox,
-            isOpenSortBox, setIsOpenSortBox
+            isOpenSortBox, setIsOpenSortBox,lastUrl, setLastUrl
         }}>
             {children}
         </AppContext.Provider>

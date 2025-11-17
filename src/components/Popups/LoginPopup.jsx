@@ -1,20 +1,33 @@
 
 import ReactDOM from "react-dom";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {useContext} from "react";
 import {AppContext} from "../../context/AppContext.jsx";
 import {AuthContext} from "../../context/AuthContext.jsx";
 
-function LoginPopup({title, description,children}) {
+function LoginPopup({title, description,children,redirect}) {
 
-    const {setIsOpenLoginPopup, setIsResetInput} = useContext(AppContext);
+    const {setIsOpenLoginPopup, setIsResetInput , lastUrl, setLastUrl} = useContext(AppContext);
     const {isLogin}= useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
 
     const redirectUserToHomePage=()=>{
-        setIsOpenLoginPopup(false);
-        setIsResetInput(false);
-        isLogin && navigate("/")
+        if (redirect) {
+            navigate(redirect)
+        }else {
+            if (lastUrl){
+                console.log(lastUrl)
+                navigate(lastUrl)
+            }
+            else {
+                setIsOpenLoginPopup(false);
+                setIsResetInput(false);
+                isLogin && navigate("/")
+            }
+        }
+
+
     }
 
     return ReactDOM.createPortal(
