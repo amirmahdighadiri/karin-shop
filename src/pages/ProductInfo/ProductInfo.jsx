@@ -89,11 +89,9 @@ function ProductInfo(props) {
     const addToCartHandler = async (event)=>{
         event.preventDefault()
         if (userId){
-            const cart = await fetch('https://karin-shop-db.onrender.com/cart')
-            const data = await cart.json()
             setSpinnerAddToCart(true)
             const newCartItem = {
-                id: data.length,
+                id: Date.now(),
                 userId : userId,
                 productId : id,  // product id ( get =>  line 21 )
                 quantity: productCount,
@@ -102,8 +100,21 @@ function ProductInfo(props) {
                 warranty: "گارانتی 18 ماهه",
                 deliveryTime: "ارسال 1 روز کاری"
             }
+            //* ! ================== ! Send New Shopping Cart To Server ! ================== ! *//
+           await fetch('https://karin-shop-db.onrender.com/cart' , {
+                method: 'POST',
+                headers:{
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newCartItem)
+            }).then(res =>setSpinnerAddToCart(false))
 
-            console.log(newCartItem)
+            //* ! ================== ! Send New Shopping Cart To LocalStroage ! ================== ! *//
+
+            const getLocalStordgeShoppingCart = JSON.parse(localStorage.getItem('shoppingCart'))
+            getLocalStordgeShoppingCart.push(newCartItem)
+            localStorage.setItem('shoppingCart',JSON.stringify(getLocalStordgeShoppingCart))
+
         } else {
             setIsShowPopup(true)
             setLastUrl(location.pathname)
@@ -176,6 +187,17 @@ function ProductInfo(props) {
                                     </svg>
                                     <img src="/images/products/phone-image/14.webp" alt="iphone 16"
                                          className="object-cover rounded-lg blur-sm"/>
+                                </div>
+                            </div>
+                            <div className="hidden fixed top-0 right-0 left-0 mx-auto z-20 w-200 bg-white dark:bg-gray-900 p-4 rounded-sm">
+                                <div className="flex items-center justify-between text-zinc-900 dark:text-gray-100">
+                                    <h2 className="font-Dana-Medium text-lg">تصاویر گوشی موبایل اپل مدل iPhone 16 دو سیم کارت</h2>
+                                    <svg xmlns="http://www.w3.org/2000/svg" id="x-mark" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-6" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12"></path>
+                                    </svg>
+                                </div>
+                                <div className="flex-center mt-14">
+                                    <img src="/images/products/phone-image/11.png" alt="iphone 16" className=""/>
                                 </div>
                             </div>
                         </div>
