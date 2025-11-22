@@ -14,7 +14,7 @@ function CommentForm(props) {
     }
 
     return (
-        <form className="w-1/4">
+        <form className="w-full lg:w-1/4">
             <p className="text-lg mb-2 text-zinc-900 dark:text-white">ثبت دیدگاه</p>
             <input type="text" value={commentTitle} onChange={(event)=>setCommentTitle(event.target.value)} className="w-full border dark:border-white/20 dark:text-zinc-100 rounded-lg p-2 mb-4 focus:pr-3 focus:border-blue-400 transition-all duration-300 outline-none" placeholder="عنوان"/>
             <p className="dark:text-white text-gray-500 text-sm mb-4">این محصول را به دیگران پیشنهاد :</p>

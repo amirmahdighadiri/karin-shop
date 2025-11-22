@@ -178,11 +178,11 @@ function ProductInfo(props) {
                 </span>
             </div>
             {/* ! ================== ! Product Detais Wrapper ! ================== ! */}
-            <div className="grid grid-cols-12 gap-4 *:rounded-lg *:p-4 *:bg-white *:dark:bg-gray-800 mt-5">
+            <div className="grid grid-cols-12 gap-4 *:rounded-lg *:p-4 *:bg-white *:dark:bg-gray-800 mt-5 px-0 md:px-3 lg:px-0">
                 {/* ! ================== ! Product Detais ! ================== ! */}
-                <div className="col-span-9">
+                <div className="col-span-12 lg:col-span-9">
                     {/* ! ================== ! Product Details Wrapper ! ================== ! */}
-                    <div className="flex items-start gap-x-1">
+                    <div className="flex flex-col md:flex-row items-center md:items-start gap-x-8 xl:gap-x-2">
                         {/* ! ================== ! Product Gallery ! ================== ! */}
                         <div className="w-1/2">
                             {/* ! ================== ! Main Image & More Image Box ! ================== ! */}
@@ -319,14 +319,14 @@ function ProductInfo(props) {
                         </div>
                     </div>
                     {/* ! ================== ! Services Wrapper ! ================== ! */}
-                    <div className="flex items-center justify-between gap-x-4 text-sm lg:text-base mt-10">
+                    <div className="grid grid-cols-12 gap-x-1 gap-y-2 lg:gap-x-4 text-sm lg:text-base mt-10">
                         {servicesItems.map(item => (
                             <ServicesBox key={item.id} {...item} />
                         ))}
                     </div>
                 </div>
                 {/* ! ================== ! Product Summary ! ================== ! */}
-                <div className="col-span-3 sticky top-5 self-start flex flex-col gap-y-6">
+                <div className="col-span-12 lg:col-span-3 sticky top-5 self-start flex flex-col gap-y-6">
                     <div className="font-Dana-DemiBold text-gray-800 dark:text-gray-100 text-2xl">
                         {String(product.price).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                         <span className="text-base pr-1">تومان</span>
@@ -478,10 +478,10 @@ function ProductInfo(props) {
                             <span className="text-sm text-blue-500">(28 دیدگاه)</span>
                         </div>
                         {/* ! ================== ! Product Comments Wrapper ! ================== ! */}
-                        <div className="w-full flex items-start gap-10">
+                        <div className="w-full flex flex-col lg:flex-row items-start gap-10">
                             <CommentForm />
                             {/* ! ================== ! Comments Wrapper ! ================== ! */}
-                            <div className="w-3/4 divide-y divide-gray-200 dark:divide-gray-200/20">
+                            <div className="w-full lg:w-3/4 divide-y divide-gray-200 dark:divide-gray-200/20">
                                 {
                                     comments.slice(0,visibleCount).map(comment =>(
                                         <CommentBox key={comment.id} {...comment} />

@@ -14,8 +14,6 @@ function CommentBox({title,content,createdAt,likes,dislikes,user}) {
             month: "long",
             day: "numeric",
         }).format(new Date(iso));
-
-    console.log(user)
     return (
         <div className="py-4">
             {/* ! ================== ! Comments Title ! ================== ! */}
@@ -33,14 +31,14 @@ function CommentBox({title,content,createdAt,likes,dislikes,user}) {
             {/* ! ================== ! Comment Text ! ================== ! */}
             <p className="text-gray-500 dark:text-gray-200 mb-2 line-clamp-2">{content}</p>
             {/* ! ================== ! Comment Details ! ================== ! */}
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-y-2">
                 {/* ! ================== ! Comment Date & User Name ! ================== ! */}
                 <div className="flex items-center gap-x-4 text-gray-400 text-sm">
                     <span className="">{toJalali(createdAt)}</span>
                     <span className="">{user?.fullname}</span>
                 </div>
                 {/* ! ================== ! Comment Reaction Wrapper ! ================== ! */}
-                <div className="flex items-center gap-x-2">
+                <div className="flex items-center gap-x-2 mt-3 lg:mt-0">
                     <p className="text-gray-400 text-sm">آیا این دیدگاه برایتان مفید بود؟</p>
                     <div className="flex items-center gap-x-2">
                         <button onClick={()=>toggleReaction('like')} type="button" className={`flex items-center justify-center gap-x-2 text-sm text-green-600 border ${reaction === 'like' ? 'border-green-600' : 'border-transparent'} p-2 rounded-lg transition-all duration-300 cursor-pointer`}>
