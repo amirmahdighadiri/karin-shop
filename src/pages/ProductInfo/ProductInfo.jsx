@@ -19,6 +19,7 @@ import {AppContext} from "../../context/AppContext.jsx";
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
+import ProductGallery from "../../components/ProductGallery/ProductGallery.jsx";
 
 
 function ProductInfo(props) {
@@ -39,9 +40,10 @@ function ProductInfo(props) {
     const [userId , setUserId] = useState(()=> localStorage.getItem('userID'));
     const navigate = useNavigate();
     const [isShowPopup, setIsShowPopup] = useState(false);
-    const {setLastUrl} = useContext(AppContext)
+    const {setLastUrl , isOpenGallery, setIsOpenGallery ,setOverlay} = useContext(AppContext)
     const location = useLocation();
     const [spinnerAddToCart ,setSpinnerAddToCart ] = useState(false);
+
 
 
     useEffect(() => {
@@ -59,6 +61,14 @@ function ProductInfo(props) {
             colorCode: product?.colors?.[0].colorCode,
         })
     },[product])
+
+    useEffect(() => {
+        if (isOpenGallery){
+            document.body.classList.add('min-h-screen')
+
+            return () => document.body.classList.remove('min-h-screen')
+        }
+    },[isOpenGallery])
 
     const increaseProdductHandler = () => {
         setProductCount(prev => prev + 1)
@@ -125,7 +135,16 @@ function ProductInfo(props) {
             setLastUrl(location.pathname)
         }
     }
-
+    const openProductGallerHandler = (event) => {
+        if (event.target.tagName==='IMG' || event.target.tagName==='svg'){
+            setIsOpenGallery(true);
+            setOverlay(true);
+        }
+    }
+    const closeProductGallerHandler = () => {
+        setIsOpenGallery(false);
+        setOverlay(false)
+    }
 
     return (
         <section className="container">
@@ -166,85 +185,47 @@ function ProductInfo(props) {
                     <div className="flex items-start gap-x-1">
                         {/* ! ================== ! Product Gallery ! ================== ! */}
                         <div className="w-1/2">
-                            {/* ! ================== ! Main Image ! ================== ! */}
-                            <div className="">
-                                <img src="/images/products/phone-image/11.png" alt="iphone 16" className=""/>
+                            {/* ! ================== ! Main Image & More Image Box ! ================== ! */}
+                            <div onClick={openProductGallerHandler}>
+                                <img src="/images/products/phone-image/11.png" alt="iphone 16" className="cursor-pointer"/>
+                                <div className="flex items-center justify-center gap-x-4.5 mt-4">
+                                    <div className="size-16 p-1 border dark:border-gray-700 rounded-lg cursor-pointer">
+                                        <img src="/images/products/phone-image/11.png" alt="iphone 16"
+                                             className="object-cover rounded-lg"/>
+                                    </div>
+                                    <div className="size-16 p-1 border dark:border-gray-700 rounded-lg cursor-pointer">
+                                        <img src="/images/products/phone-image/13.webp" alt="iphone 16"
+                                             className="object-cover rounded-lg"/>
+                                    </div>
+                                    <div className="size-16 p-1 border dark:border-gray-700 rounded-lg cursor-pointer">
+                                        <img src="/images/products/phone-image/12.webp" alt="iphone 16"
+                                             className="object-cover rounded-lg"/>
+                                    </div>
+                                    <div className="relative size-16 flex-center p-1 border dark:border-gray-700 rounded-lg cursor-pointer overflow-hidden">
+                                        <svg xmlns="http://www.w3.org/2000/svg" id="ellipsis" fill="none"
+                                             stroke="currentColor" strokeWidth="1.5"
+                                             className="absolute z-10 size-8 text-gray-100" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round"
+                                                  d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m6 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m6 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0"></path>
+                                        </svg>
+                                        <img src="/images/products/phone-image/14.webp" alt="iphone 16"
+                                             className="object-cover rounded-lg blur-sm"/>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="flex items-center justify-center gap-x-4.5 mt-4">
-                                <div className="size-16 p-1 border dark:border-gray-700 rounded-lg cursor-pointer">
-                                    <img src="/images/products/phone-image/11.png" alt="iphone 16"
-                                         className="object-cover rounded-lg"/>
-                                </div>
-                                <div className="size-16 p-1 border dark:border-gray-700 rounded-lg cursor-pointer">
-                                    <img src="/images/products/phone-image/13.webp" alt="iphone 16"
-                                         className="object-cover rounded-lg"/>
-                                </div>
-                                <div className="size-16 p-1 border dark:border-gray-700 rounded-lg cursor-pointer">
-                                    <img src="/images/products/phone-image/12.webp" alt="iphone 16"
-                                         className="object-cover rounded-lg"/>
-                                </div>
-                                <div className="relative size-16 flex-center p-1 border dark:border-gray-700 rounded-lg cursor-pointer overflow-hidden">
-                                    <svg xmlns="http://www.w3.org/2000/svg" id="ellipsis" fill="none"
-                                         stroke="currentColor" strokeWidth="1.5"
-                                         className="absolute z-10 size-8 text-gray-100" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round"
-                                              d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m6 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m6 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0"></path>
-                                    </svg>
-                                    <img src="/images/products/phone-image/14.webp" alt="iphone 16"
-                                         className="object-cover rounded-lg blur-sm"/>
-                                </div>
-                            </div>
-                            <div className="max-w-200 fixed top-0 right-0 left-0  mx-auto z-20 bg-white dark:bg-gray-900 p-4 rounded-sm">
+                            {/* ! ================== ! Product Gallery Wrapper ! ================== ! */}
+                            <div className={`${isOpenGallery ? 'block' : 'hidden'} max-w-200 fixed top-0 right-0 left-0  mx-auto z-20 bg-white dark:bg-gray-900 p-4 rounded-sm`}>
+                                {/* ! ================== ! Product Gallery Title ! ================== ! */}
                                 <div className="flex items-center justify-between text-zinc-900 dark:text-gray-100">
                                     <h2 className="font-Dana-Medium text-lg">تصاویر گوشی موبایل اپل مدل iPhone 16 دو سیم کارت</h2>
-                                    <div className="">
+                                    <div onClick={closeProductGallerHandler}>
                                         <svg xmlns="http://www.w3.org/2000/svg" id="x-mark" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-6 cursor-pointer" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12"></path>
                                         </svg>
                                     </div>
                                 </div>
-                                <div className="relative w-full flex-center my-14">
-                                    <Swiper
-                                        modules={[Navigation]}
-                                        navigation={{
-                                            nextEl: '.custom-next-gallery-btn',
-                                            prevEl: '.custom-prev-gallery-btn',
-                                        }}
-                                        spaceBetween={10}
-                                        slidesPerView={1}
-                                    >
-                                        <SwiperSlide>
-                                            <img src="/images/products/phone-image/11.png" alt="iphone 16" className="size-100 rounded-lg mx-auto"/>
-                                        </SwiperSlide>
-                                        <SwiperSlide>
-                                            <img src="/images/products/phone-image/13.webp" alt="iphone 16" className="size-100 rounded-lg mx-auto"/>
-                                        </SwiperSlide>
-                                        <SwiperSlide>
-                                            <img src="/images/products/phone-image/12.webp" alt="iphone 16" className="size-100 rounded-lg mx-auto"/>
-                                        </SwiperSlide>
-                                        <SwiperSlide>
-                                            <img src="/images/products/phone-image/14.webp" alt="iphone 16" className="size-100 rounded-lg mx-auto"/>
-                                        </SwiperSlide>
-                                    </Swiper>
-
-                                    <div className="w-full absolute top-0 bottom-0 z-10 my-auto flex items-center justify-between gap-x-2 px-20">
-                                        <button className={`custom-prev-gallery-btn size-10 flex-center dark:bg-gray-800 bg-white rounded-lg dark:text-white text-gray-800  transition-all shadow-lg cursor-pointer`} >
-                                            <svg xmlns="http://www.w3.org/2000/svg" id="chevron" fill="none" stroke="currentColor"
-                                                 strokeWidth="1.5" className="-rotate-90 size-6 transition-all" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round"
-                                                      d="m19.5 8.25-7.5 7.5-7.5-7.5"></path>
-                                            </svg>
-                                        </button>
-                                        <button className={`custom-next-gallery-btn size-10 flex-center dark:bg-gray-800 bg-white rounded-lg dark:text-white text-gray-800  transition-all shadow-lg cursor-pointer`} >
-                                            <svg xmlns="http://www.w3.org/2000/svg" id="chevron" fill="none" stroke="currentColor"
-                                                 strokeWidth="1.5" className="rotate-90 size-6 transition-all" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round"
-                                                      d="m19.5 8.25-7.5 7.5-7.5-7.5"></path>
-                                            </svg>
-
-                                        </button>
-                                    </div>
-                                </div>
+                                {/* ! ================== ! Product Gallery  ! ================== ! */}
+                                <ProductGallery />
                             </div>
                         </div>
                         {/* ! ================== ! Product Info ! ================== ! */}
