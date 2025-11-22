@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {memo} from 'react';
 
 function ToggleCheckBox({id , title ,checkStatus, children , filterCahngeHandler}) {
     const clickHandler= () =>{
         filterCahngeHandler(id)
     }
+
     return (
         <div className="w-full flex items-center justify-between">
             <label htmlFor={id} className="cursor-pointer inline-flex items-center gap-x-2">
@@ -19,4 +20,4 @@ function ToggleCheckBox({id , title ,checkStatus, children , filterCahngeHandler
     );
 }
 
-export default ToggleCheckBox;
+export default memo(ToggleCheckBox);

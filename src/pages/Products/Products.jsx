@@ -105,7 +105,7 @@ function Products(props) {
     }
 
     useEffect(() => {
-        fetch("http://localhost:3000/products").then(res => res.json()).then(data => {
+        fetch("https://karin-shop-db.onrender.com/products").then(res => res.json()).then(data => {
             setProducts(data)
             setFilteredProducts(data)
         }).catch((err) => console.log(err));
@@ -145,7 +145,6 @@ function Products(props) {
                     }
                 })
                 setFilteredProducts(resultSort);
-
             }
         }
     }, [sort,products])
@@ -154,8 +153,7 @@ function Products(props) {
         <section className="container">
             {/* ! ================== ! Beardcrumb  ! ================== ! */}
             <div className="flex items-center gap-x-2 mt-8 mr-4">
-                <Link to="/"
-                      className="inline-flex items-center gap-x-1 text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white transition-all">
+                <Link to="/" className="inline-flex items-center gap-x-1 text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white transition-all">
                     <svg xmlns="http://www.w3.org/2000/svg" id="home" fill="none" stroke="currentColor"
                          strokeWidth="1.5" className="size-4" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round"

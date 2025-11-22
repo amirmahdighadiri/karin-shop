@@ -45,7 +45,6 @@ function ProductInfo(props) {
     const [spinnerAddToCart ,setSpinnerAddToCart ] = useState(false);
 
 
-
     useEffect(() => {
         fetch(`https://karin-shop-db.onrender.com/${id}`).then(res => res.json()).then(data => setProduct(data))
         fetch(`https://karin-shop-db.onrender.com/comments?productId=${id}&_expand=user`).then(res => res.json()).then(data => setComments(data))

@@ -92,7 +92,7 @@ function Menu(props) {
                             </Link>
                         </li>
                         <li className="hidden lg:block">
-                            <Link to="/" className={`relative before:content-[''] before:absolute before:-bottom-1 before:left-1/2 before:-translate-x-1/2 before:w-0 before:h-0.5 before:bg-blue-500 hover:before:w-full before:transition-all before:duration-400 before:delay-75`}>
+                            <Link to="/products" className={`relative before:content-[''] before:absolute before:-bottom-1 before:left-1/2 before:-translate-x-1/2 before:w-0 before:h-0.5 before:bg-blue-500 hover:before:w-full before:transition-all before:duration-400 before:delay-75`}>
                                 فروشگاه
                             </Link>
                         </li>
