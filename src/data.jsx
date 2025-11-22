@@ -183,7 +183,6 @@ const productLiveTexts = [
     {colorName: "green-600", text: "💯 ۵۰۰+ نفر بیش از ۲ بار این کالا را خریده‌اند"}
 ]
 
-
 const services = [
     {
         id: 1,

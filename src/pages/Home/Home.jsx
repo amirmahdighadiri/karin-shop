@@ -9,6 +9,10 @@ import {category, prodcuts, brands , articles} from "../../data.jsx";
 import React, {useEffect, useState} from "react";
 import Timer from "../../util/Timer.jsx";
 import {updateSwiperState} from "../../store/SwiperStore.jsx";
+import ArticleBox from "../../components/ArticleBox/ArticleBox.jsx";
+import DynamicIcon from "../../icon/DynamicIcon.jsx";
+import CustomSwiperBtn from "../../components/CustomSwiperBtn/CustomSwiperBtn.jsx";
+import PopularSwiperBtn from "../../components/CustomSwiperBtn/PopularSwiperBtn.jsx";
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -21,10 +25,7 @@ import banner3 from '../../assets/images/banner/HeroBanner/3.gif'
 import banner4 from '../../assets/images/banner/HeroBanner/4.webp'
 import banner5 from '../../assets/images/banner/DoubleBanners/1.webp'
 import banner6 from '../../assets/images/banner/DoubleBanners/2.webp'
-import ArticleBox from "../../components/ArticleBox/ArticleBox.jsx";
-import DynamicIcon from "../../icon/DynamicIcon.jsx";
-import CustomSwiperBtn from "../../components/CustomSwiperBtn/CustomSwiperBtn.jsx";
-import PopularSwiperBtn from "../../components/CustomSwiperBtn/PopularSwiperBtn.jsx";
+
 
 function Home() {
     const [popularCategory, setPopularCategory] = useState(category);

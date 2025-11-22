@@ -47,12 +47,12 @@ function ProductInfo(props) {
 
 
     useEffect(() => {
-        fetch(`http://localhost:3000/products/${id}`).then(res => res.json()).then(data => setProduct(data))
+        fetch(`https://karin-shop-db.onrender.com/${id}`).then(res => res.json()).then(data => setProduct(data))
         fetch(`https://karin-shop-db.onrender.com/comments?productId=${id}&_expand=user`).then(res => res.json()).then(data => setComments(data))
     }, [id])
 
     useEffect(() => {
-        fetch(`http://localhost:3000/products?category=${product.category}`).then(res => res.json()).then(data => setRelatedProducts(data))
+        fetch(`https://karin-shop-db.onrender.com/products?category=${product.category}`).then(res => res.json()).then(data => setRelatedProducts(data))
     }, [product])
 
     useEffect(() => {
