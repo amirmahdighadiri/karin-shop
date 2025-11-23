@@ -40,7 +40,7 @@ function Login(props) {
     }
 
     useEffect(() => {
-        fetch("http://localhost:3000/users").then(res => res.json()).then(data => setUsers(data)).catch(err => console.log(err));
+        fetch("https://karin-shop-db.onrender.com/users").then(res => res.json()).then(data => setUsers(data)).catch(err => console.log(err));
     },[])
 
     return (

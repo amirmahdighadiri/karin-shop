@@ -14,6 +14,11 @@ function ShoppingCart(props) {
     useEffect(() => {
         fetch(`http://localhost:3000/cart?userId=${userId}&_expand=product`).then(res=>res.json()).then((data)=>setUserShoppingProducts(data)).catch((err)=>console.log(err));
     },[])
+    useEffect(() => {
+        fetch(`https://karin-shop-db.onrender.com/cart?userId=${userId}&_expand=product`).then(res=>res.json()).then((data)=>{
+            console.log(data)
+        }).catch((err)=>console.log(err));
+    },[])
 
     useEffect(() => {
         localStorage.setItem('shoppingCart',JSON.stringify(userShoppingProducts));
@@ -55,9 +60,9 @@ function ShoppingCart(props) {
     const removeAllShoppinProduct = async (event)=>{
         event.preventDefault()
         for(const item of userShoppingProducts){
-           await fetch(`http://localhost:3000/cart/${item.id}`, {
-               method: "DELETE",
-           })
+            await fetch(`http://localhost:3000/cart/${item.id}`, {
+                method: "DELETE",
+            })
         }
         setUserShoppingProducts([])
     }

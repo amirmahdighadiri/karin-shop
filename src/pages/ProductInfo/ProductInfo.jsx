@@ -20,6 +20,7 @@ import {AppContext} from "../../context/AppContext.jsx";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import ProductGallery from "../../components/ProductGallery/ProductGallery.jsx";
+import {AuthContext} from "../../context/AuthContext.jsx";
 
 
 function ProductInfo(props) {
@@ -43,10 +44,11 @@ function ProductInfo(props) {
     const {setLastUrl , isOpenGallery, setIsOpenGallery ,setOverlay} = useContext(AppContext)
     const location = useLocation();
     const [spinnerAddToCart ,setSpinnerAddToCart ] = useState(false);
+    const {setUserShoppingCartCount} = useContext(AuthContext);
 
 
     useEffect(() => {
-        fetch(`https://karin-shop-db.onrender.com/${id}`).then(res => res.json()).then(data => setProduct(data))
+        fetch(`https://karin-shop-db.onrender.com/products/${id}`).then(res => res.json()).then(data => setProduct(data))
         fetch(`https://karin-shop-db.onrender.com/comments?productId=${id}&_expand=user`).then(res => res.json()).then(data => setComments(data))
     }, [id])
 
@@ -100,6 +102,26 @@ function ProductInfo(props) {
             })
         }
     }
+    const sendShoppingProdctItemToServer = async (item)=>{
+        await fetch('https://karin-shop-db.onrender.com/cart' , {
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(item)
+        }).then(res =>setSpinnerAddToCart(false))
+    }
+    const sendShoppingProductToLocalStorage = async (item)=>{
+        const getLocalStordgeShoppingCart = JSON.parse(localStorage.getItem('shoppingCart'))
+        getLocalStordgeShoppingCart.push(item)
+        await localStorage.setItem('shoppingCart',JSON.stringify(getLocalStordgeShoppingCart))
+    }
+    const updateShoppingCartItem = async ()=>{
+       await fetch('https://karin-shop-db.onrender.com/cart').then(res => res.json()).then(data =>{
+            setUserShoppingCartCount(data.reduce((acc, item)=> acc + item.quantity , 0))
+           // console.log(data.reduce((acc, item)=> acc + item.quantity , 0))
+        })
+    }
     const addToCartHandler = async (event)=>{
         event.preventDefault()
         if (userId){
@@ -115,20 +137,11 @@ function ProductInfo(props) {
                 deliveryTime: "ارسال 1 روز کاری"
             }
             //* ! ================== ! Send New Shopping Cart To Server ! ================== ! *//
-           await fetch('https://karin-shop-db.onrender.com/cart' , {
-                method: 'POST',
-                headers:{
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(newCartItem)
-            }).then(res =>setSpinnerAddToCart(false))
-
+            await sendShoppingProdctItemToServer(newCartItem)
             //* ! ================== ! Send New Shopping Cart To LocalStroage ! ================== ! *//
-
-            const getLocalStordgeShoppingCart = JSON.parse(localStorage.getItem('shoppingCart'))
-            getLocalStordgeShoppingCart.push(newCartItem)
-            localStorage.setItem('shoppingCart',JSON.stringify(getLocalStordgeShoppingCart))
-
+            await sendShoppingProductToLocalStorage(newCartItem)
+            //* ! ================== ! Update Shopping Cart Item Count ! ================== ! *//
+            await updateShoppingCartItem()
         } else {
             setIsShowPopup(true)
             setLastUrl(location.pathname)

@@ -33,7 +33,7 @@ function Register(props) {
 
     const registerHandler = async (event) => {
         event.preventDefault()
-        const users = await fetch("http://localhost:3000/users").then(res => res.json()).then(data => data).catch(err => console.log(err));
+        const users = await fetch("https://karin-shop-db.onrender.com/users").then(res => res.json()).then(data => data).catch(err => console.log(err));
         const newUser = {
             id: users.length + 1,
             username: formState.inputs.username.value,
@@ -46,7 +46,7 @@ function Register(props) {
 
         setIsRegister(true)
 
-        await fetch("http://localhost:3000/users", {
+        await fetch("https://karin-shop-db.onrender.com/users", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

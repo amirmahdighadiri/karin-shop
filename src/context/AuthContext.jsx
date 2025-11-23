@@ -20,7 +20,7 @@ function AuthProvider({children}) {
         setLocalCart(getProduct)
 
         try {
-            const res = await fetch(`http://localhost:3000/cart?userId=${userInfo.id}`)
+            const res = await fetch(`https://karin-shop-db.onrender.com/cart?userId=${userInfo.id}`)
             const data = await res.json()
 
             if (data.length > 0) {
@@ -28,7 +28,7 @@ function AuthProvider({children}) {
             }else {
                 setServerCart([])
             }
-        }catch (err){
+        } catch (err){
             console.log(err)
         }
 
@@ -49,7 +49,7 @@ function AuthProvider({children}) {
             userId = localStorage.getItem("userID");
         }
 
-        fetch(`http://localhost:3000/cart?userId=${userId}`).then(res => res.json()).then(data => {
+        fetch(`https://karin-shop-db.onrender.com/cart?userId=${userId}`).then(res => res.json()).then(data => {
             setUserShoppingCartCount(data.reduce((acc, item) => acc + item.quantity, 0))
         })
     }

@@ -3,7 +3,7 @@ import {Link, Outlet} from "react-router-dom";
 import LoginPopup from "../../components/Popups/LoginPopup.jsx";
 import {AppContext} from "../../context/AppContext.jsx";
 import {AuthContext} from "../../context/AuthContext.jsx";
-import login from "../../components/Forms/Login.jsx";
+
 
 function AuthLayout() {
     const {isOpenLoginPopup,isRegister} = useContext(AppContext);
