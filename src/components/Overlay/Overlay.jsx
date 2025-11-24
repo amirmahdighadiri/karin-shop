@@ -4,7 +4,7 @@ import {useContext} from "react";
 
 
 function Overlay() {
-    const {overlay, setOverlay, setIsShowCityBox, setIsShowResultSearchBox,setOpenMenu, setIsOpenFilterBox, setIsOpenSortBox,setIsOpenGallery} = useContext(AppContext);
+    const {overlay, setOverlay, setIsShowCityBox, setIsShowResultSearchBox,setOpenMenu, setIsOpenFilterBox, setIsOpenSortBox,setIsOpenGallery , setIsOpenDasboardMenu} = useContext(AppContext);
     const closeOverlayHandler = () => {
         setOverlay(false)
         setIsShowCityBox(false);
@@ -13,6 +13,7 @@ function Overlay() {
         setIsOpenFilterBox(false);
         setIsOpenSortBox(false);
         setIsOpenGallery(false);
+        setIsOpenDasboardMenu(false);
     }
 
     return ReactDOM.createPortal(

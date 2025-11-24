@@ -1,15 +1,38 @@
+import {useContext, useState} from "react";
 // Images
 import userProfile from '../../assets/images/profile/user.png'
 import map from '../../assets/images/icon/map.png'
+import {AppContext} from "../../context/AppContext.jsx";
+
 
 
 function Dashboard() {
+
+    const {isOpenDasboardMenu, setIsOpenDasboardMenu , setOverlay} = useContext(AppContext);
+
+    const openDashboardMenuHandler = (event) => {
+        event.preventDefault();
+        setIsOpenDasboardMenu(true)
+        setOverlay(true);
+    }
+    const closeDashboardMenuHandler = (event) => {
+        event.preventDefault();
+        setIsOpenDasboardMenu(false)
+        setOverlay(false);
+    }
+
     return (
         <section className="container">
             {/* ! ================== ! Wrapper ! ================== ! */}
             <div className="grid grid-cols-12 gap-x-8 mt-10">
                 {/* ! ================== ! Dashboard Menu ! ================== ! */}
-                <div className="col-span-3 sticky top-1 p-4 shadow rounded-lg bg-white dark:bg-gray-800 self-start">
+                <div className={`fixed h-3/4 lg:h-auto ${isOpenDasboardMenu ? 'translate-y-0' : 'translate-y-full'} lg:translate-y-0 right-0 left-0 max-lg:bottom-0 z-20 lg:col-span-3 lg:sticky lg:top-1 p-4 shadow rounded-lg bg-white dark:bg-gray-800 self-start transition-all`}>
+                    {/* ! ================== ! Close Menu Button In Mobile ! ================== ! */}
+                    <button onClick={closeDashboardMenuHandler} type="button" className="block lg:hidden mb-4 cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" id="x-mark" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-6 text-zinc-900 dark:text-zinc-100" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
                     {/* ! ================== ! User Info ! ================== ! */}
                     <div className="flex items-center justify-between py-3 border-b border-gray-200 dark:border-white/20">
                         {/* ! ================== ! User Info Content ! ================== ! */}
@@ -78,9 +101,16 @@ function Dashboard() {
                     </ul>
                 </div>
                 {/* ! ================== ! Dashboard Content ! ================== ! */}
-                <div className="col-span-9">
+                <div className="col-span-12 lg:col-span-9">
+                    {/* ! ================== ! Open Dashboard Menu Button ! ================== ! */}
+                    <button onClick={openDashboardMenuHandler} type="button" className="flex lg:hidden items-center gap-x-1 rounded-lg text-white p-2 text-sm bg-blue-500 mr-2 mb-5 cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" id="bars-3" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-5" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5"></path>
+                        </svg>
+                        منوی کاربری
+                    </button>
                     {/* ! ================== ! Account Overview Cards ! ================== ! */}
-                    <div className="grid grid-cols-12 gap-4 *:col-span-4 *:bg-white dark:*:bg-gray-800 *:rounded-lg *:p-4 *:shadow">
+                    <div className="grid grid-cols-12 gap-4 *:col-span-12 md:*:col-span-4 *:bg-white dark:*:bg-gray-800 *:rounded-lg *:p-4 *:shadow">
                         <div className="flex items-center gap-x-4">
                             <svg xmlns="http://www.w3.org/2000/svg" id="wallet" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-9 text-blue-500" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a2.25 2.25 0 0 0-2.25-2.25H15a3 3 0 1 1-6 0H5.25A2.25 2.25 0 0 0 3 12m18 0v6a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 18v-6m18 0V9M3 12V9m18 0a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 9m18 0V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v3"></path>
@@ -112,7 +142,7 @@ function Dashboard() {
                     {/* ! ================== ! Recent Order ! ================== ! */}
                     <div className="bg-white dark:bg-gray-800 shadow p-4 rounded-lg mt-5">
                         {/* ! ================== ! Recent Order TItle ! ================== ! */}
-                        <div className="flex items-center gap-x-2 mb-5">
+                        <div className="flex items-center gap-x-2">
                             <svg xmlns="http://www.w3.org/2000/svg" className="size-10" fill="none" viewBox="0 0 64 64">
                                 <path fill="url(#paint0_linear)" fillRule="evenodd" d="M32 8a8 8 0 1 0 0 16 8 8 0 0 0 0-16m-13.333 8c0-7.364 5.97-13.333 13.333-13.333S45.333 8.637 45.333 16 39.363 29.333 32 29.333 18.667 23.363 18.667 16" clipRule="evenodd"></path>
                                 <path fill="url(#paint1_linear)" d="M10.667 17.933a3 3 0 0 1 3-3h36.666a3 3 0 0 1 3 3v35.734a5 5 0 0 1-5 5H15.667a5 5 0 0 1-5-5z"></path>
@@ -147,7 +177,7 @@ function Dashboard() {
                             <h2 className="font-Dana-DemiBold text-lg text-zinc-900 dark:text-zinc-100">سفارش های اخیر :</h2>
                         </div>
                         {/* ! ================== ! Recent Order Table ! ================== ! */}
-                        <div className="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+                        <div className="relative mt-5 overflow-auto rounded-lg border border-gray-200 dark:border-gray-700">
                             <table className="w-full text-right text-sm">
                                 <thead className="">
                                     <tr className="text-xs text-gray-700 dark:text-gray-200 bg-gray-100 dark:bg-gray-900 *:px-6 *:py-3.5">
@@ -159,7 +189,7 @@ function Dashboard() {
                                 </thead>
                                 <tbody className="text-gray-400">
                                     <tr className="*:px-6 *:py-5 border-b border-gray-200 dark:border-gray-700 cursor-pointer hover:bg-gray-50 hover:dark:bg-gray-700 transition-all">
-                                    <th className="flex items-center gap-x-2 text-gray-900 dark:text-white">
+                                    <th className="flex items-center gap-x-2 text-gray-900 dark:text-white text-nowrap">
                                         <img src="/images/products/phone-image/11.png" alt="iphone 16" className="size-10 object-cover"/>
                                         <p className="">گوشی موبایل اپل مدل iPhone 16</p>
                                     </th>
@@ -168,7 +198,7 @@ function Dashboard() {
                                     <td className="text-red-500 font-Dana-DemiBold">لغو شده</td>
                                 </tr>
                                     <tr className="*:px-6 *:py-5 border-b border-gray-200 dark:border-gray-700 cursor-pointer hover:bg-gray-50 hover:dark:bg-gray-700 transition-all">
-                                        <th className="flex items-center gap-x-2 text-gray-900 dark:text-white">
+                                        <th className="flex items-center gap-x-2 text-gray-900 dark:text-white text-nowrap">
                                             <img src="/images/products/7.webp" alt="macbook air" className="size-10 object-cover"/>
                                             <p className="">گوشی موبایل اپل مدل iPhone 16</p>
                                         </th>
@@ -177,7 +207,7 @@ function Dashboard() {
                                         <td className="text-yellow-500 font-Dana-DemiBold">درانتظار پرداخت</td>
                                     </tr>
                                     <tr className="*:px-6 *:py-5 cursor-pointer hover:bg-gray-50 hover:dark:bg-gray-700 transition-all">
-                                        <th className="flex items-center gap-x-2 text-gray-900 dark:text-white">
+                                        <th className="flex items-center gap-x-2 text-gray-900 dark:text-white text-nowrap">
                                             <img src="/images/products/5.webp" alt="asus TUF" className="size-10 object-cover"/>
                                             <p className="">گوشی موبایل اپل مدل iPhone 16</p>
                                         </th>
