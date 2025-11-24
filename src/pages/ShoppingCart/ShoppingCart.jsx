@@ -12,27 +12,19 @@ function ShoppingCart(props) {
     const {setUserShoppingCartCount} = useContext(AuthContext);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/cart?userId=${userId}&_expand=product`).then(res=>res.json()).then((data)=>setUserShoppingProducts(data)).catch((err)=>console.log(err));
-    },[])
-    useEffect(() => {
-        fetch(`https://karin-shop-db.onrender.com/cart?userId=${userId}&_expand=product`).then(res=>res.json()).then((data)=>{
-            console.log(data)
-        }).catch((err)=>console.log(err));
+        fetch(`https://karin-shop-db.onrender.com/cart?userId=${userId}&_expand=product`).then(res=>res.json()).then((data)=>setUserShoppingProducts(data)).catch((err)=>console.log(err));
     },[])
 
     useEffect(() => {
-        localStorage.setItem('shoppingCart',JSON.stringify(userShoppingProducts));
-        setGetLocalStorageProductItem(JSON.parse(localStorage.getItem("shoppingCart")));
         setTotalQuantity(userShoppingProducts.reduce((acc , item)=> acc + item.quantity , 0))
         setTotalPrice(userShoppingProducts.reduce((acc , item)=> acc + item.quantity * item.product.price , 0))
-
     },[userShoppingProducts])
     useEffect(() => {
         setUserShoppingCartCount(totalQuantity);
     },[totalQuantity])
 
     const updateQuantityProduct = (id, newQuantity) => {
-        fetch(`http://localhost:3000/cart/${id}`, {
+        fetch(`https://karin-shop-db.onrender.com/cart/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -40,18 +32,17 @@ function ShoppingCart(props) {
             body: JSON.stringify({quantity: newQuantity}),
         }).then(res =>{
             if (res.ok){
-                fetch(`http://localhost:3000/cart?userId=${userId}&_expand=product`).then(res=>res.json()).then((data)=>setUserShoppingProducts(data)).catch((err)=>console.log(err));
+                fetch(`https://karin-shop-db.onrender.com/cart?userId=${userId}&_expand=product`).then(res=>res.json()).then((data)=>setUserShoppingProducts(data)).catch((err)=>console.log(err));
             }
         }).catch(err => console.log(err));
     }
 
-
     const removeShoppingProductItem =async (id)=>{
-        await fetch(`http://localhost:3000/cart/${id}`, {
+        await fetch(`https://karin-shop-db.onrender.com/cart/${id}`, {
             method: "DELETE",
         }).then(res => {
             if (res.ok){
-                fetch(`http://localhost:3000/cart?userId=${userId}&_expand=product`).then(res=>res.json()).then((data)=>setUserShoppingProducts(data)).catch((err)=>console.log(err));
+                fetch(`https://karin-shop-db.onrender.com/cart?userId=${userId}&_expand=product`).then(res=>res.json()).then((data)=>setUserShoppingProducts(data)).catch((err)=>console.log(err));
             }
         })
             .catch(err => console.log(err));
@@ -60,7 +51,7 @@ function ShoppingCart(props) {
     const removeAllShoppinProduct = async (event)=>{
         event.preventDefault()
         for(const item of userShoppingProducts){
-            await fetch(`http://localhost:3000/cart/${item.id}`, {
+            await fetch(`https://karin-shop-db.onrender.com/cart/${item.id}`, {
                 method: "DELETE",
             })
         }
@@ -111,7 +102,7 @@ function ShoppingCart(props) {
                             {/* ! ================== ! Shopping Item ! ================== ! */}
                             <div className="space-y-4 divide-y-2 divide-gray-200 dark:divide-white/20">
                                 {
-                                    getLocalStorageProductItem.map(product => (
+                                    userShoppingProducts.map(product => (
                                         <ShoppingCartBox key={product.id} {...product} updateQuantityProduct={updateQuantityProduct} removeShoppingProductItem={removeShoppingProductItem}/>
                                     ))
                                 }

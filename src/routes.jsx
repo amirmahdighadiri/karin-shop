@@ -8,6 +8,7 @@ import Products from "./pages/Products/Products.jsx";
 import Error from "./pages/Error/Error.jsx";
 import ShoppingCart from "./pages/ShoppingCart/ShoppingCart.jsx";
 import ProductInfo from "./pages/ProductInfo/ProductInfo.jsx";
+import Dashboard from "./pages/Dashboard/Dashboard.jsx";
 
 const routes = [
     {
@@ -21,6 +22,7 @@ const routes = [
             {path:"products", element: <Products />},
             {path:"products/:id", element: <ProductInfo />},
             {path:"shopping-cart", element: <ShoppingCart />},
+            {path: "dashboard", element: <Dashboard />},
             {path: "*" , element: <Error />}
         ]
     },

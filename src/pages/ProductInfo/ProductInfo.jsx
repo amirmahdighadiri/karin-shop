@@ -111,35 +111,41 @@ function ProductInfo(props) {
             body: JSON.stringify(item)
         }).then(res =>setSpinnerAddToCart(false))
     }
-    const sendShoppingProductToLocalStorage = async (item)=>{
-        const getLocalStordgeShoppingCart = JSON.parse(localStorage.getItem('shoppingCart'))
-        getLocalStordgeShoppingCart.push(item)
-        await localStorage.setItem('shoppingCart',JSON.stringify(getLocalStordgeShoppingCart))
+    const updateShoppingProductItemInServer = async (item , count)=>{
+        await fetch(`https://karin-shop-db.onrender.com/cart/${item.id}`, {
+            method: 'PATCH',
+            headers:{ "Content-Type": "application/json" },
+            body: JSON.stringify({ quantity: item.quantity + count })
+        }).then(res =>setSpinnerAddToCart(false))
     }
     const updateShoppingCartItem = async ()=>{
        await fetch('https://karin-shop-db.onrender.com/cart').then(res => res.json()).then(data =>{
             setUserShoppingCartCount(data.reduce((acc, item)=> acc + item.quantity , 0))
-           // console.log(data.reduce((acc, item)=> acc + item.quantity , 0))
         })
     }
     const addToCartHandler = async (event)=>{
         event.preventDefault()
-        if (userId){
+        const res = await fetch(`https://karin-shop-db.onrender.com/cart?userId=${userId}&productId=${id}`)
+        const data = await res.json()
+        if (userId) {
             setSpinnerAddToCart(true)
-            const newCartItem = {
-                id: Date.now(),
-                userId : userId,
-                productId : id,  // product id ( get =>  line 21 )
-                quantity: productCount,
-                colorCode : productColorInfo.colorCode,
-                colorName: productColorInfo.name,
-                warranty: "گارانتی 18 ماهه",
-                deliveryTime: "ارسال 1 روز کاری"
+            if (data){
+                //* ! ================== ! Upadte Item In Server ! ================== ! *//
+               await updateShoppingProductItemInServer(data[0] , productCount)
+            } else {
+                const newCartItem = {
+                    id: Date.now(),
+                    userId : userId,
+                    productId : id,  // product id ( get =>  line 21 )
+                    quantity: productCount,
+                    colorCode : productColorInfo.colorCode,
+                    colorName: productColorInfo.name,
+                    warranty: "گارانتی 18 ماهه",
+                    deliveryTime: "ارسال 1 روز کاری"
+                }
+                //* ! ================== ! Send New Shopping Cart To Server ! ================== ! *//
+                await sendShoppingProdctItemToServer(newCartItem)
             }
-            //* ! ================== ! Send New Shopping Cart To Server ! ================== ! *//
-            await sendShoppingProdctItemToServer(newCartItem)
-            //* ! ================== ! Send New Shopping Cart To LocalStroage ! ================== ! *//
-            await sendShoppingProductToLocalStorage(newCartItem)
             //* ! ================== ! Update Shopping Cart Item Count ! ================== ! *//
             await updateShoppingCartItem()
         } else {

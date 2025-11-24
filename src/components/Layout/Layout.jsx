@@ -14,7 +14,7 @@ function Layout() {
             <main>
                 <Outlet />
             </main>
-            {!location.pathname.toLowerCase().includes("/auth-layout") && <Footer/>}
+            {!(location.pathname.toLowerCase().includes("/auth-layout") || location.pathname.toLowerCase().includes("/dashboard")) && <Footer/>}
             <Overlay />
         </RootContext>
     );

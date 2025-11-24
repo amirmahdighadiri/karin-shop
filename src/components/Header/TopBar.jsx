@@ -29,9 +29,7 @@ function TopBar(props) {
         <section
             className="lg:container flex items-center justify-between h-16 lg:h-auto lg:mt-5 px-4 lg:px-0 bg-white dark:bg-gray-800 lg:bg-transparent lg:dark:bg-transparent">
             {/* ! ================== ! Menu Button In Mobile ! ================== ! */}
-            <button
-                className="flex lg:hidden items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800 border border-gray-300 dark:border-gray-700 p-2 text-zinc-900 dark:text-zinc-100 rounded-full cursor-pointer transition-all *:size-6"
-                onClick={openMenu}>
+            <button className="flex lg:hidden items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800 border border-gray-300 dark:border-gray-700 p-2 text-zinc-900 dark:text-zinc-100 rounded-full cursor-pointer transition-all *:size-6" onClick={openMenu}>
                 <svg xmlns="http://www.w3.org/2000/svg" id="bars" fill="none" stroke="currentColor" strokeWidth="1.5"
                      className="size-6" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round"
@@ -39,9 +37,7 @@ function TopBar(props) {
                 </svg>
             </button>
             {/* ! ================== ! Search Box ! ================== ! */}
-            <div
-                className="relative z-20 hidden lg:block w-full lg:w-84 border border-gray-300 dark:border-transparent bg-gray-50 dark:bg-gray-700 py-1 pl-2 pr-1 rounded-full"
-                onClick={searchResultHandler}>
+            <div className="relative z-20 hidden lg:block w-full lg:w-84 border border-gray-300 dark:border-transparent bg-gray-50 dark:bg-gray-700 py-1 pl-2 pr-1 rounded-full" onClick={searchResultHandler}>
                 {/* ! ================== ! Search Box Wrapper ! ================== ! */}
                 <div className="flex items-center gap-x-2">
                     {/* ! ================== ! Search Icon ! ================== ! */}
@@ -57,8 +53,7 @@ function TopBar(props) {
                            placeholder="جستجو در کارین..."/>
                 </div>
                 {/* ! ================== ! Search Result Box ! ================== ! */}
-                <div
-                    className={`absolute right-0 left-0 ${isShowResultSearchBox ? 'top-14 opacity-100 visible' : 'top-20 opacity-0 invisible'} z-20 bg-white dark:bg-gray-700 rounded-xl p-4 transition-all`}>
+                <div className={`absolute right-0 left-0 ${isShowResultSearchBox ? 'top-14 opacity-100 visible' : 'top-20 opacity-0 invisible'} z-20 bg-white dark:bg-gray-700 rounded-xl p-4 transition-all`}>
                     {/* ! ================== ! Search Result Text ! ================== ! */}
                     <span className="flex items-center gap-x-1 text-sm text-gray-600 dark:text-gray-200">
                         نتیجه جستجو :
@@ -161,9 +156,7 @@ function TopBar(props) {
             {/* ! ================== ! Buttons Wrapper ! ================== ! */}
             <div className="flex items-center gap-x-3">
                 {/* ! ================== ! Profile Button ! ================== ! */}
-                <button
-                    className="relative hidden lg:flex items-center justify-between gap-x-1 hover:bg-gray-100 dark:hover:bg-gray-800 border border-gray-300 dark:border-gray-700 py-2 px-4 text-zinc-900 dark:text-zinc-100 rounded-full cursor-pointer transition-all group">
-
+                <button className="relative hidden lg:flex items-center justify-between gap-x-1 hover:bg-gray-100 dark:hover:bg-gray-800 border border-gray-300 dark:border-gray-700 py-2 px-4 text-zinc-900 dark:text-zinc-100 rounded-full cursor-pointer transition-all group">
                     <svg xmlns="http://www.w3.org/2000/svg" id="user" fill="none" stroke="currentColor"
                          strokeWidth="1.5" className="size-6" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round"
@@ -172,8 +165,7 @@ function TopBar(props) {
                     <Link to="/auth-layout/login" className={`${isLogin ? 'hidden' : 'block'}`}>حساب کاربری</Link>
                     <span className={`${isLogin ? 'block' : 'hidden'}`}>{userInfo.fullname}</span>
                     {/* ! ================== ! Profile Submenu ! ================== ! */}
-                    <div
-                        className={`${isLogin ? 'block' : 'hidden'} absolute z-10 top-20 group-hover:top-12 left-1/2 -translate-x-1/2 flex flex-col gap-y-3 border border-gray-100 dark:border-transparent w-52 p-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 invisible opacity-0 group-hover:visible group-hover:opacity-100 rounded-lg transition-all delay-100 *:py-1.5 *:px-2 *:rounded-lg *:transition-all`}>
+                    <div className={`${isLogin ? 'block' : 'hidden'} absolute z-10 top-20 group-hover:top-12 left-1/2 -translate-x-1/2 flex flex-col gap-y-3 border border-gray-100 dark:border-transparent w-52 p-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 invisible opacity-0 group-hover:visible group-hover:opacity-100 rounded-lg transition-all delay-100 *:py-1.5 *:px-2 *:rounded-lg *:transition-all`}>
                         <Link to="/" className="flex items-center gap-x-2 hover:bg-blue-500 hover:text-gray-100">
                             <svg xmlns="http://www.w3.org/2000/svg" id="user" fill="none" stroke="currentColor"
                                  strokeWidth="1.5" className="size-6" viewBox="0 0 24 24">
@@ -190,7 +182,7 @@ function TopBar(props) {
                             </svg>
                             <span className="">لیست پیام ها</span>
                         </Link>
-                        <Link to="/" className="flex items-center gap-x-2 hover:bg-blue-500 hover:text-gray-100">
+                        <Link to="/dashboard" className="flex items-center gap-x-2 hover:bg-blue-500 hover:text-gray-100">
                             <svg xmlns="http://www.w3.org/2000/svg" id="cog" fill="none" stroke="currentColor"
                                  strokeWidth="1.5" className="size-6" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round"
@@ -211,9 +203,7 @@ function TopBar(props) {
                     </div>
                 </button>
                 {/* ! ================== ! Change Theme Button ! ================== ! */}
-                <button
-                    className="flex-center hover:bg-gray-100 dark:hover:bg-gray-800 border border-gray-300 dark:border-gray-700 p-2 text-zinc-900 dark:text-zinc-100 rounded-full cursor-pointer transition-all *:size-6"
-                    onClick={toggleTheme}>
+                <button className="flex-center hover:bg-gray-100 dark:hover:bg-gray-800 border border-gray-300 dark:border-gray-700 p-2 text-zinc-900 dark:text-zinc-100 rounded-full cursor-pointer transition-all *:size-6" onClick={toggleTheme}>
                     <svg className="block dark:hidden" id="moon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path
                             d="M21.752 15.002A9.7 9.7 0 0 1 18 15.75 9.75 9.75 0 0 1 8.25 6c0-1.33.266-2.597.748-3.752A9.75 9.75 0 0 0 3 11.25 9.75 9.75 0 0 0 12.75 21a9.75 9.75 0 0 0 9.002-5.998Z"></path>
@@ -225,8 +215,7 @@ function TopBar(props) {
                     </svg>
                 </button>
                 {/* ! ================== ! Shopping Button ! ================== ! */}
-                <Link to="/shopping-cart"
-                      className="relative hidden lg:flex items-center justify-between bg-blue-600 text-white rounded-full p-2 cursor-pointer">
+                <Link to="/shopping-cart" className="relative hidden lg:flex items-center justify-between bg-blue-600 text-white rounded-full p-2 cursor-pointer">
                     {/* ! ================== ! Animation Effect ! ================== ! */}
                     <span className="absolute -top-1 -right-1 size-5 bg-red-500 animate-ping rounded-full"></span>
                     <span
