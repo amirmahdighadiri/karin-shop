@@ -77,7 +77,7 @@ function AuthProvider({children}) {
         })
         /* ! ================== ! Update Server And Local ! ================== ! */
         finalCart.map(async item =>{
-            await fetch(`http://localhost:3000/cart/${item.id}` , {
+            await fetch(`https://karin-shop-db.onrender.com/${item.id}` , {
                 method: 'PUT',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(item),

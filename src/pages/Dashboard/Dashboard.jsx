@@ -190,7 +190,7 @@ function Dashboard() {
                                 <tbody className="text-gray-400">
                                     <tr className="*:px-6 *:py-5 border-b border-gray-200 dark:border-gray-700 cursor-pointer hover:bg-gray-50 hover:dark:bg-gray-700 transition-all">
                                     <th className="flex items-center gap-x-2 text-gray-900 dark:text-white text-nowrap">
-                                        <img src="/images/products/phone-image/11.png" alt="iphone 16" className="size-10 object-cover"/>
+                                        <img src={`${import.meta.env.BASE_URL}/images/products/phone-image/11.png`} alt="iphone 16" className="size-10 object-cover"/>
                                         <p className="">گوشی موبایل اپل مدل iPhone 16</p>
                                     </th>
                                     <td className="">1402/11/11</td>
@@ -199,7 +199,7 @@ function Dashboard() {
                                 </tr>
                                     <tr className="*:px-6 *:py-5 border-b border-gray-200 dark:border-gray-700 cursor-pointer hover:bg-gray-50 hover:dark:bg-gray-700 transition-all">
                                         <th className="flex items-center gap-x-2 text-gray-900 dark:text-white text-nowrap">
-                                            <img src="/images/products/7.webp" alt="macbook air" className="size-10 object-cover"/>
+                                            <img src={`${import.meta.env.BASE_URL}/images/products/7.webp`} alt="macbook air" className="size-10 object-cover"/>
                                             <p className="">گوشی موبایل اپل مدل iPhone 16</p>
                                         </th>
                                         <td className="">1402/11/11</td>
@@ -208,7 +208,7 @@ function Dashboard() {
                                     </tr>
                                     <tr className="*:px-6 *:py-5 cursor-pointer hover:bg-gray-50 hover:dark:bg-gray-700 transition-all">
                                         <th className="flex items-center gap-x-2 text-gray-900 dark:text-white text-nowrap">
-                                            <img src="/images/products/5.webp" alt="asus TUF" className="size-10 object-cover"/>
+                                            <img src={`${import.meta.env.BASE_URL}/images/products/5.webp`} alt="asus TUF" className="size-10 object-cover"/>
                                             <p className="">گوشی موبایل اپل مدل iPhone 16</p>
                                         </th>
                                         <td className="">1402/11/11</td>
