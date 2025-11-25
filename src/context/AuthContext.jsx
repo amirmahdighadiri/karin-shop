@@ -38,9 +38,12 @@ function AuthProvider({children}) {
 
     },[])
     const logout = useCallback(() => {
+        console.log(1)
+        localStorage.removeItem("userID");
+        localStorage.removeItem("shoppingCart");
         setIsLogin(false);
         setUserInfo({});
-        localStorage.removeItem("userID");
+
     },[])
 
     const getProductCount = (id)=>{
@@ -92,7 +95,7 @@ function AuthProvider({children}) {
             const isLoggedIn = localStorage.getItem("userID");
             getProductCount()
             if (isLoggedIn) {
-                const res = await fetch(`http://localhost:3000/users/${isLoggedIn}`)
+                const res = await fetch(`https://karin-shop-db.onrender.com/users/${isLoggedIn}`)
                 const data = await res.json()
 
                 setUserInfo(data)

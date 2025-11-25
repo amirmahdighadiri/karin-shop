@@ -1,4 +1,5 @@
 import {createContext, useEffect, useState} from "react";
+import {useLocation} from "react-router-dom";
 
 export const AppContext = createContext()
 
@@ -15,11 +16,17 @@ function AppProvider({children}) {
     const [lastUrl, setLastUrl] = useState("");
     const [isOpenGallery, setIsOpenGallery] = useState(false);
     const [isOpenDasboardMenu, setIsOpenDasboardMenu] = useState(false);
+    const location = useLocation();
 
     const [theme, setTheme] = useState(() => {
         const savedTheme = localStorage.getItem("theme");
         return savedTheme ? savedTheme : "light"
     });
+
+    useEffect(()=>{
+        setOpenMenu(false);
+        setOverlay(false)
+    },[location.pathname])
 
     useEffect(() => {
         document.documentElement.className = String(theme)

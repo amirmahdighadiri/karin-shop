@@ -12,7 +12,7 @@ function TopBar(props) {
         theme,
         setTheme,
     } = useContext(AppContext);
-    const {isLogin, userInfo,userShoppingCartCount} = useContext(AuthContext);
+    const {isLogin, userInfo,userShoppingCartCount,logout} = useContext(AuthContext);
 
 
     const toggleTheme = () => setTheme(prev => prev === "light" ? "dark" : "light");
@@ -23,6 +23,11 @@ function TopBar(props) {
     const openMenu = () => {
         setOverlay(true)
         setOpenMenu(true)
+    }
+
+    const logoutAccountHandler = (event)=>{
+        event.preventDefault()
+        logout()
     }
 
     return (
@@ -192,14 +197,14 @@ function TopBar(props) {
                             </svg>
                             <span className="">اطلاعات کاربری</span>
                         </Link>
-                        <Link to="/" className="flex items-center gap-x-2 hover:bg-red-500 hover:text-gray-100">
+                        <div onClick={logoutAccountHandler} type="button" className="flex items-center gap-x-2 hover:bg-red-500 hover:text-gray-100">
                             <svg xmlns="http://www.w3.org/2000/svg" id="arrow-left-end" fill="none"
                                  stroke="currentColor" strokeWidth="1.5" className="size-6" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round"
                                       d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75"></path>
                             </svg>
                             <span className="">خروج از حساب</span>
-                        </Link>
+                        </div>
                     </div>
                 </button>
                 {/* ! ================== ! Change Theme Button ! ================== ! */}

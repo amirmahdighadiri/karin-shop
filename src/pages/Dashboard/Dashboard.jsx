@@ -3,12 +3,14 @@ import {useContext, useState} from "react";
 import userProfile from '../../assets/images/profile/user.png'
 import map from '../../assets/images/icon/map.png'
 import {AppContext} from "../../context/AppContext.jsx";
+import {AuthContext} from "../../context/AuthContext.jsx";
 
 
 
 function Dashboard() {
 
     const {isOpenDasboardMenu, setIsOpenDasboardMenu , setOverlay} = useContext(AppContext);
+    const {logout} = useContext(AuthContext);
 
     const openDashboardMenuHandler = (event) => {
         event.preventDefault();
@@ -19,6 +21,10 @@ function Dashboard() {
         event.preventDefault();
         setIsOpenDasboardMenu(false)
         setOverlay(false);
+    }
+    const logoutAccountHandler = (event)=>{
+        event.preventDefault()
+        logout()
     }
 
     return (
@@ -93,10 +99,12 @@ function Dashboard() {
                             <span className="">اطلاعات حساب</span>
                         </li>
                         <li className="text-red-400">
-                            <svg xmlns="http://www.w3.org/2000/svg" id="arrow-left-end" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-6" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75"></path>
-                            </svg>
-                            <span className="">خروج</span>
+                            <button onClick={logoutAccountHandler} className="flex items-center gap-x-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" id="arrow-left-end" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-6" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75"></path>
+                                </svg>
+                                <span className="">خروج</span>
+                            </button>
                         </li>
                     </ul>
                 </div>
