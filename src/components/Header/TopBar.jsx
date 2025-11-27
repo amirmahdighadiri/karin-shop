@@ -156,7 +156,7 @@ function TopBar(props) {
                         <span className="text-gray-900 dark:text-white">شاپ</span>
                     </Link>
                 </h1>
-                <span className="hidden lg:block text-gray-400 text-sm">خرید موبایل و لپ‌تاپ</span>
+                <p className="hidden lg:block text-gray-400 text-sm">خرید موبایل و لپ‌تاپ</p>
             </div>
             {/* ! ================== ! Buttons Wrapper ! ================== ! */}
             <div className="flex items-center gap-x-3">

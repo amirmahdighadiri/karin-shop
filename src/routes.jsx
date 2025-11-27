@@ -9,6 +9,7 @@ import Error from "./pages/Error/Error.jsx";
 import ShoppingCart from "./pages/ShoppingCart/ShoppingCart.jsx";
 import ProductInfo from "./pages/ProductInfo/ProductInfo.jsx";
 import Dashboard from "./pages/Dashboard/Dashboard.jsx";
+import AboutUS from "./pages/AboutUS/AboutUS.jsx";
 
 const routes = [
     {
@@ -23,6 +24,7 @@ const routes = [
             {path:"products/:id", element: <ProductInfo />},
             {path:"shopping-cart", element: <ShoppingCart />},
             {path: "dashboard", element: <Dashboard />},
+            {path:"about-us", element: <AboutUS />},
             {path: "*" , element: <Error />}
         ]
     },
