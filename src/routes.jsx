@@ -10,6 +10,7 @@ import ShoppingCart from "./pages/ShoppingCart/ShoppingCart.jsx";
 import ProductInfo from "./pages/ProductInfo/ProductInfo.jsx";
 import Dashboard from "./pages/Dashboard/Dashboard.jsx";
 import AboutUS from "./pages/AboutUS/AboutUS.jsx";
+import FAQ from "./pages/FAQ/FAQ.jsx";
 
 const routes = [
     {
@@ -25,6 +26,7 @@ const routes = [
             {path:"shopping-cart", element: <ShoppingCart />},
             {path: "dashboard", element: <Dashboard />},
             {path:"about-us", element: <AboutUS />},
+            {path:"faq", element: <FAQ />},
             {path: "*" , element: <Error />}
         ]
     },
