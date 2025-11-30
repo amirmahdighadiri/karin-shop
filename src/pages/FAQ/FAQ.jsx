@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
+import Accordion from "../../components/Accordion/Accordion.jsx";
 
 function Faq() {
     const [questions , setQuestions] = useState([]);
@@ -7,7 +8,7 @@ function Faq() {
     const [accrdionHeight, setAccrdionHeight] = useState(0);
 
     useEffect(() => {
-        fetch("http://localhost:3000/faq").then(res => res.json()).then((data) => setQuestions(data));
+        fetch("https://karin-shop-db.onrender.com/faq").then(res => res.json()).then((data) => setQuestions(data));
     } ,[])
 
     useEffect(() => {
@@ -17,7 +18,11 @@ function Faq() {
             }
         })
 
-        // return () => window.removeEventListener("click",()=> setOpenIndex(null))
+        return () => window.removeEventListener("click",(event)=>{
+            if (event.target.tagName !== "BUTTON" ) {
+                setOpenIndex(null)
+            }
+        })
     },[])
 
     const openAccordionHandler = (event , id)=>{
@@ -68,19 +73,7 @@ function Faq() {
                 {/* ! ================== ! Question Wrapper  ! ================== ! */}
                 <ul className="w-full sm:w-10/12 md:w-5/12 mx-auto mt-10 text-gray-400 space-y-4">
                     {questions.map((item, index) => (
-                        <li key={item.id} className={` w-full flex flex-col py-3 px-5 rounded-lg bg-white dark:bg-gray-800 shadow overflow-hidden transition-all duration-300`}
-                             style={{
-                                 height: openIndex === item.id ? `${accrdionHeight}px` : "48px",
-                             }}
-                        >
-                            <button id={item.id} onClick={(event)=>openAccordionHandler(event , item.id)} type="button" className="flex items-center justify-between cursor-pointer">
-                                {item.question}
-                                <svg xmlns="http://www.w3.org/2000/svg" id="chevron" fill="none" stroke="currentColor" strokeWidth="1.5" className={`${openIndex === item.id ? 'rotate-0' : 'rotate-90'} size-4 transition-all`} viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path>
-                                </svg>
-                            </button>
-                            <p className="mt-2.5 text-justify leading-7">{item.answer}</p>
-                        </li>
+                       <Accordion key={item.id} {...item} openIndex={openIndex} openAccordionHandler={openAccordionHandler} accrdionHeight={accrdionHeight}/>
                     ))}
                 </ul>
             </div>

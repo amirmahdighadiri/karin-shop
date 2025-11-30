@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import aboutPageimage from "../../assets/images/about/about-page.png";
 import React from "react";
 
-function AboutUs(props) {
+function AboutUs() {
     return (
         <section className="container">
             {/* ! ================== ! Beardcrumb  ! ================== ! */}

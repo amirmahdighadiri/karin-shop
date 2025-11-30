@@ -7,7 +7,7 @@ import RootContext from "../../context/RootContext.jsx";
 
 function Layout() {
     const location = useLocation();
-
+    
     return (
         <RootContext>
             {!location.pathname.toLowerCase().includes("/auth-layout") && <Header/>}
