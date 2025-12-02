@@ -9,25 +9,29 @@ import Error from "./pages/Error/Error.jsx";
 import ShoppingCart from "./pages/ShoppingCart/ShoppingCart.jsx";
 import ProductInfo from "./pages/ProductInfo/ProductInfo.jsx";
 import Dashboard from "./pages/Dashboard/Dashboard.jsx";
-import AboutUS from "./pages/AboutUS/AboutUS.jsx";
+import AboutUS from "./pages/AboutUs/AboutUS.jsx";
 import FAQ from "./pages/FAQ/FAQ.jsx";
+import ContactUs from "./pages/ContactUs/ContactUs.jsx";
 
 const routes = [
     {
         path: "/", element: <Layout/>, children: [
-            {index: true , element: <Home/> , title: "کارین شاپ | خانه"},
-            {path:"auth-layout", element: <AuthLayout/> , children: [
-                    {path:"login", element: <Login/>,title: "کارین شاپ | ورود"},
-                    {path:"register", element: <Register/>,title: "کارین شاپ | ثبت نام"},
-                    {path:"password", element: <Password/>,title: "کارین شاپ | تغییر رمز عبور"}
-                ]},
-            {path:"products", element: <Products />,title: "کارین شاپ | محصولات"},
-            {path:"products/:id", element: <ProductInfo />,title: "کارین شاپ | محصولات"},
-            {path:"shopping-cart", element: <ShoppingCart />,title: "کارین شاپ | سبد خرید"},
-            {path: "dashboard", element: <Dashboard />,title: "کارین شاپ | حساب کاربری"},
-            {path:"about-us", element: <AboutUS />,title: "کارین شاپ | درباره ما"},
-            {path:"faq", element: <FAQ />,title: "کارین شاپ | سوالات متداول"},
-            {path: "*" , element: <Error />,title: "کارین شاپ | صفحه ای یافت نشد"}
+            {index: true, element: <Home/>, title: "کارین شاپ | خانه"},
+            {
+                path: "auth-layout", element: <AuthLayout/>, children: [
+                    {path: "login", element: <Login/>, title: "کارین شاپ | ورود"},
+                    {path: "register", element: <Register/>, title: "کارین شاپ | ثبت نام"},
+                    {path: "password", element: <Password/>, title: "کارین شاپ | تغییر رمز عبور"}
+                ]
+            },
+            {path: "products", element: <Products/>, title: "کارین شاپ | محصولات"},
+            {path: "products/:id", element: <ProductInfo/>, title: "کارین شاپ | محصولات"},
+            {path: "shopping-cart", element: <ShoppingCart/>, title: "کارین شاپ | سبد خرید"},
+            {path: "dashboard", element: <Dashboard/>, title: "کارین شاپ | حساب کاربری"},
+            {path: "about-us", element: <AboutUS/>, title: "کارین شاپ | درباره ما"},
+            {path: "faq", element: <FAQ/>, title: "کارین شاپ | سوالات متداول"},
+            {path: "contact-us", element: <ContactUs/>, title: "کارین شاپ | تماس با ما"},
+            {path: "*", element: <Error/>, title: "کارین شاپ | صفحه ای یافت نشد"}
         ]
     },
 

@@ -57,7 +57,7 @@ function Login(props) {
                       validations={[requiredValidator(), minValidator(10), maxValidator(20)]} placeHolder={"رمز عبور"}
                       onInputChange={onInputChange} resetInput={isResetInput}/>
                <button onClick={checkLoginHandler}
-                       className={`w-full flex-center p-3 rounded-md text-white dark:bg-blue-600 mt-5 ${formState.isFormValid ? 'opacity-100 cursor-pointer' : 'opacity-20 cursor-not-allowed'}`}
+                       className={`w-full flex-center p-3 rounded-md text-white bg-blue-400 dark:bg-blue-600 mt-5 ${formState.isFormValid ? 'opacity-100 cursor-pointer' : 'opacity-20 cursor-not-allowed'}`}
                        type="submit" disabled={!formState.isFormValid}>ورود
                </button>
                <p className="mt-8 text-center text-sm/6 text-gray-500 dark:text-gray-300">

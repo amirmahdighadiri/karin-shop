@@ -125,10 +125,21 @@
 
     /* ! =========== ! Animation ! =========== ! */
     --animate-ping: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+    --animate-grow-width: grow-width 2.5s ease-in-out;
+
     @keyframes ping {
         75%, 100% {
             transform: scale(2);
             opacity: 0;
         }
     }
+    @keyframes grow-width {
+        0%{
+            width: 0;
+        }
+        100% {
+            width: 100%;
+        }
+    }
+
 }
