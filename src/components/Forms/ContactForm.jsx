@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import Input from "../Input/input.jsx";
 import {maxValidator, minValidator, requiredValidator} from "../../validators/rules.jsx";
 
-function ContactForm(props) {
+function ContactForm({setIsOpenModal,setMessageStatus}) {
 
     const [formState, onInputChange] = useForm({
         phoneNumber: {
@@ -23,8 +23,14 @@ function ContactForm(props) {
         event.preventDefault()
 
         if (formState.isFormValid && contentText.length >0){
-
+            setMessageStatus(true)
+        }else {
+            setMessageStatus(false)
         }
+
+        setIsOpenModal(true)
+
+
     }
 
 

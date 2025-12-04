@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 import Input from "../../components/Input/input.jsx";
 import ContactForm from "../../components/Forms/ContactForm.jsx";
@@ -6,6 +6,8 @@ import Notification from "../../components/Notification/Notification.jsx";
 import DynamicIcon from "../../icon/DynamicIcon.jsx";
 
 function ContactUs(props) {
+    const [isOpenModal, setIsOpenModal] = useState(false);
+    const [messageStatus , setMessageStatus] = useState(false);
     return (
         <section className="container">
             {/* ! ================== ! Beardcrumb  ! ================== ! */}
@@ -27,10 +29,21 @@ function ContactUs(props) {
                 </span>
             </div>
             {/* ! ================== ! Contact US From ! ================== ! */}
-            <ContactForm />
+            <ContactForm  setIsOpenModal={setIsOpenModal} setMessageStatus={setMessageStatus} />
 
-            {/*<Notification title="خطا" message="لطفا دوباره تلاش کنید"  IconComponent={() => <DynamicIcon name="closeCircle" />} />*/}
-            <Notification title="موفق" message="پبام شما با موفقیت ارسال شد"  IconComponent={() => <DynamicIcon name="tickCircle" />} />
+            {
+                isOpenModal && messageStatus && (
+                    <Notification title="موفق" message="پبام شما با موفقیت ارسال شد" isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal}  IconComponent={() => <DynamicIcon name="tickCircle" />} />
+                )
+            }
+
+            {
+                isOpenModal && !messageStatus && (
+                    <Notification title="خطا" message="لطفا دوباره تلاش کنید"  IconComponent={() => <DynamicIcon name="closeCircle" />} />
+                )
+            }
+
+
         </section>
     );
 }
