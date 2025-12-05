@@ -104,22 +104,22 @@ function Menu(props) {
                             </Link>
                         </li>
                         <li className="hidden lg:block relative group">
-                            <Link to="/" className={`flex items-center gap-x-1 relative before:content-[''] before:absolute before:-bottom-1 before:left-1/2 before:-translate-x-1/2 before:w-0 before:h-0.5 before:bg-blue-500 group-hover:before:w-full before:transition-all before:duration-400 before:delay-150`}>
+                            <span className={`flex items-center gap-x-1 relative before:content-[''] before:absolute before:-bottom-1 before:left-1/2 before:-translate-x-1/2 before:w-0 before:h-0.5 before:bg-blue-500 group-hover:before:w-full before:transition-all before:duration-400 before:delay-150 cursor-pointer`}>
                                 منوی ساده
                                 <svg xmlns="http://www.w3.org/2000/svg" id="chevron" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-4 group-hover:rotate-180 transition-all duration-400 delay-150" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path>
                                 </svg>
-                            </Link>
+                            </span>
                             {/* ! ================== ! Sub Menu ! ================== ! */}
                             <ul className="absolute z-10 top-20 group-hover:top-14 right-0 w-48 p-2 rounded-lg bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow-sm space-y-2 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 delay-150 *:px-2 *:py-1.5 *:rounded-lg">
                                 <li className="hover:bg-blue-600 hover:text-white">
                                     <Link to="/about-us" className="">درباره ما</Link>
                                 </li>
                                 <li className="hover:bg-blue-600 hover:text-white">
-                                    <Link to="/" className="">سوالات متداول</Link>
+                                    <Link to="/faq" className="">سوالات متداول</Link>
                                 </li>
                                 <li className="hover:bg-blue-600 hover:text-white">
-                                    <Link to="/" className="">تماس با ما</Link>
+                                    <Link to="/contact-us" className="">تماس با ما</Link>
                                 </li>
                                 <li className="hover:bg-blue-600 hover:text-white">
                                     <Link to="/" className="">صفحات</Link>

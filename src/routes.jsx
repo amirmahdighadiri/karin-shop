@@ -12,6 +12,9 @@ import Dashboard from "./pages/Dashboard/Dashboard.jsx";
 import AboutUS from "./pages/AboutUs/AboutUS.jsx";
 import FAQ from "./pages/FAQ/FAQ.jsx";
 import ContactUs from "./pages/ContactUs/ContactUs.jsx";
+import OrderTable from "./components/DashboardPages/OrderTable/OrderTable.jsx";
+import UserAddress from "./components/DashboardPages/UserAddress/UserAddress.jsx";
+import FavoriteProducts from "./components/DashboardPages/FavoriteProducts/FavoriteProducts.jsx";
 
 const routes = [
     {
@@ -27,7 +30,11 @@ const routes = [
             {path: "products", element: <Products/>, title: "کارین شاپ | محصولات"},
             {path: "products/:id", element: <ProductInfo/>, title: "کارین شاپ | محصولات"},
             {path: "shopping-cart", element: <ShoppingCart/>, title: "کارین شاپ | سبد خرید"},
-            {path: "dashboard", element: <Dashboard/>, title: "کارین شاپ | حساب کاربری"},
+            {path: "dashboard", element: <Dashboard/>, title: "کارین شاپ | حساب کاربری" , children: [
+                    {path: "order" , element: <OrderTable/>},
+                    {path: "address" , element: <UserAddress/>},
+                    {path: "favorite" , element: <FavoriteProducts />},
+                ]},
             {path: "about-us", element: <AboutUS/>, title: "کارین شاپ | درباره ما"},
             {path: "faq", element: <FAQ/>, title: "کارین شاپ | سوالات متداول"},
             {path: "contact-us", element: <ContactUs/>, title: "کارین شاپ | تماس با ما"},
