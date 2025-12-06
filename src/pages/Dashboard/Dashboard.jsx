@@ -1,7 +1,7 @@
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {AppContext} from "../../context/AppContext.jsx";
 import {AuthContext} from "../../context/AuthContext.jsx";
-import {NavLink, Outlet} from "react-router-dom";
+import {NavLink, Outlet, useLocation} from "react-router-dom";
 // Images
 import userProfile from '../../assets/images/profile/user.png'
 
@@ -12,6 +12,11 @@ function Dashboard() {
 
     const {isOpenDasboardMenu, setIsOpenDasboardMenu , setOverlay} = useContext(AppContext);
     const {logout} = useContext(AuthContext);
+    const location = useLocation();
+
+    useEffect(()=>{
+        setIsOpenDasboardMenu(false)
+    },[location.pathname])
 
     const openDashboardMenuHandler = (event) => {
         event.preventDefault();
@@ -95,7 +100,7 @@ function Dashboard() {
                             </NavLink>
                         </li>
                         <li className="text-zinc-900 dark:text-zinc-100 hover:text-blue-500">
-                            <NavLink to="/" className={({isActive})=> `flex items-center gap-x-2 py-3 px-2 text-lg cursor-pointer transition-all rounded-lg ${isActive ? 'bg-blue-500/10 text-blue-500' : ''}`} end>
+                            <NavLink to="message" className={({isActive})=> `flex items-center gap-x-2 py-3 px-2 text-lg cursor-pointer transition-all rounded-lg ${isActive ? 'bg-blue-500/10 text-blue-500' : ''}`} end>
                                 <svg xmlns="http://www.w3.org/2000/svg" id="bell" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-6" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.9 23.9 0 0 0 5.454-1.31A8.97 8.97 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.97 8.97 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.3 24.3 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0"></path>
                                 </svg>

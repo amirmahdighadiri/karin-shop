@@ -47,7 +47,7 @@ function OrderTable(props) {
                         </filter>
                     </defs>
                 </svg>
-                <h2 className="font-Dana-DemiBold text-lg text-zinc-900 dark:text-zinc-100">سفارش های اخیر :</h2>
+                <h2 className="font-Dana-DemiBold md:text-lg text-zinc-900 dark:text-zinc-100">سفارش های اخیر :</h2>
             </div>
             {/* ! ================== ! Recent Order Table ! ================== ! */}
             <div className="relative mt-5 overflow-auto rounded-lg border border-gray-200 dark:border-gray-700">
@@ -68,8 +68,8 @@ function OrderTable(props) {
                             <p className="">گوشی موبایل اپل مدل iPhone 16</p>
                         </th>
                         <td className="">1402/11/11</td>
-                        <td className="">62,000,000 تومان</td>
-                        <td className="text-red-500 font-Dana-DemiBold">لغو شده</td>
+                        <td className="text-nowrap">62,000,000 تومان</td>
+                        <td className="text-red-500 font-Dana-DemiBold text-nowrap">لغو شده</td>
                     </tr>
                     <tr className="*:px-6 *:py-5 border-b border-gray-200 dark:border-gray-700 cursor-pointer hover:bg-gray-50 hover:dark:bg-gray-700 transition-all">
                         <th className="flex items-center gap-x-2 text-gray-900 dark:text-white text-nowrap">
@@ -78,8 +78,8 @@ function OrderTable(props) {
                             <p className="">گوشی موبایل اپل مدل iPhone 16</p>
                         </th>
                         <td className="">1402/11/11</td>
-                        <td className="">62,000,000 تومان</td>
-                        <td className="text-yellow-500 font-Dana-DemiBold">درانتظار پرداخت</td>
+                        <td className="text-nowrap">62,000,000 تومان</td>
+                        <td className="text-yellow-500 font-Dana-DemiBold text-nowrap">درانتظار پرداخت</td>
                     </tr>
                     <tr className="*:px-6 *:py-5 cursor-pointer hover:bg-gray-50 hover:dark:bg-gray-700 transition-all">
                         <th className="flex items-center gap-x-2 text-gray-900 dark:text-white text-nowrap">
@@ -88,8 +88,8 @@ function OrderTable(props) {
                             <p className="">گوشی موبایل اپل مدل iPhone 16</p>
                         </th>
                         <td className="">1402/11/11</td>
-                        <td className="">62,000,000 تومان</td>
-                        <td className="text-green-500 font-Dana-DemiBold">پرداخت شده</td>
+                        <td className="text-nowrap">62,000,000 تومان</td>
+                        <td className="text-green-500 font-Dana-DemiBold text-nowrap">پرداخت شده</td>
                     </tr>
                     </tbody>
                 </table>

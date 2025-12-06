@@ -9,9 +9,9 @@ function UserAddress(props) {
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-x-2">
                     <img src={map} alt="map icon" className="size-8 object-cover"/>
-                    <h2 className="font-Dana-Medium text-lg text-zinc-900 dark:text-zinc-100">آدرس های من:</h2>
+                    <h2 className="font-Dana-Medium md:text-lg text-zinc-900 dark:text-zinc-100">آدرس های من:</h2>
                 </div>
-                <button type="button" className="flex items-center gap-x-1 text-blue-500 font-Dana-DemiBold">
+                <button type="button" className="flex items-center gap-x-1 text-blue-500 font-Dana-DemiBold text-sm md:text-base">
                     <svg xmlns="http://www.w3.org/2000/svg" id="plus" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-5" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path>
                     </svg>
@@ -28,8 +28,8 @@ function UserAddress(props) {
                         </svg>
                         <h2 className="font-Dana-DemiBold">نام آدرس</h2>
                     </div>
-                    <div className="space-y-1.5 text-gray-600 dark:text-gray-300 mt-3 mr-2">
-                        <p className="">استان تهران-بلوار آزادی، خیابان استاد معین، کوچه گلستان، پلاک ۱۰</p>
+                    <div className="space-y-1.5 text-gray-600 dark:text-gray-300 mt-3 mr-2 text-sm/7 md:text-base">
+                        <p className="line-clamp-1">استان تهران-بلوار آزادی، خیابان استاد معین، کوچه گلستان، پلاک ۱۰</p>
                         <p className="">کد پستی: 000000000</p>
                         <p className="">گیرنده: امیرمهدی قدیری | ۰۹000000000</p>
                     </div>

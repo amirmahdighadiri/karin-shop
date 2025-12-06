@@ -15,6 +15,8 @@ import ContactUs from "./pages/ContactUs/ContactUs.jsx";
 import OrderTable from "./components/DashboardPages/OrderTable/OrderTable.jsx";
 import UserAddress from "./components/DashboardPages/UserAddress/UserAddress.jsx";
 import FavoriteProducts from "./components/DashboardPages/FavoriteProducts/FavoriteProducts.jsx";
+import UserMessage from "./components/DashboardPages/UserMessage/UserMessage.jsx";
+import UserInformation from "./components/DashboardPages/UserInformation/UserInformation.jsx";
 
 const routes = [
     {
@@ -34,6 +36,8 @@ const routes = [
                     {path: "order" , element: <OrderTable/>},
                     {path: "address" , element: <UserAddress/>},
                     {path: "favorite" , element: <FavoriteProducts />},
+                    {path: "message" , element: <UserMessage />},
+                    {path: "user-info" , element: <UserInformation />},
                 ]},
             {path: "about-us", element: <AboutUS/>, title: "کارین شاپ | درباره ما"},
             {path: "faq", element: <FAQ/>, title: "کارین شاپ | سوالات متداول"},

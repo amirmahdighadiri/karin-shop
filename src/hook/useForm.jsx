@@ -45,7 +45,7 @@ function useForm(insitialInputs , initialFormIsValid) {
         })
     }
 
-    return [formState, onInputChange]
+    return [formState, onInputChange , dispatch]
 
 }
 
