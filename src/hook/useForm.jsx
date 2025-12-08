@@ -24,6 +24,18 @@ const reducers = (state, action) => {
                 isFormValid:isFormValid
             }
         }
+        case 'SET_USER_VALUES':{
+            const updatedInputs = {}
+            for (const key in state.inputs) {
+                updatedInputs[key] = {
+                    value:action.value[key],
+                    isValid:true
+                }
+            }
+
+            console.log(updatedInputs)
+
+        }
         default :{
             return state;
         }

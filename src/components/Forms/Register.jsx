@@ -5,13 +5,14 @@ import {maxValidator, minValidator, requiredValidator, phoneNumberValidator} fro
 import useForm from "../../hook/useForm.jsx";
 import {AppContext} from "../../context/AppContext.jsx";
 import {AuthContext} from "../../context/AuthContext.jsx";
+import DynamicIcon from "../../icon/DynamicIcon.jsx";
 
 
 function Register(props) {
 
     const {isOpenLoginPopup, setIsOpenLoginPopup,isResetInput, setIsResetInput,isRegister, setIsRegister} = useContext(AppContext);
     const {login}= useContext(AuthContext);
-
+    const [passwordTypeStatus , setPasswordTypeStatus] = useState('password');
     const [formState, onInputChange] = useForm({
         username: {
             value: "",
@@ -69,6 +70,10 @@ function Register(props) {
         });
     }
 
+    const showPasswordHandler = (event)=> {
+        passwordTypeStatus === 'password' ? setPasswordTypeStatus('text') : setPasswordTypeStatus('password')
+    }
+
     return (
         <form className="mt-10">
 
@@ -83,9 +88,9 @@ function Register(props) {
                 <Input id="fullName" type="text"
                        validations={[requiredValidator(), minValidator(3), maxValidator(20)]}
                        placeHolder={"نام و نام خانوادگی"} onInputChange={onInputChange} resetInput={isResetInput}/>
-                <Input id="password" type="password"
+                <Input id="password" type={passwordTypeStatus}
                        validations={[requiredValidator(), minValidator(10), maxValidator(20)]} placeHolder={"رمز عبور"}
-                       onInputChange={onInputChange} resetInput={isResetInput}/>
+                       onInputChange={onInputChange} resetInput={isResetInput} IconComponent={()=> <DynamicIcon name={passwordTypeStatus === 'password' ? 'eyeSlash' : 'eye'} /> } clickEvent={showPasswordHandler}/>
             </div>
             <button
                 onClick={registerHandler}

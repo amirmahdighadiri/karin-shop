@@ -5,6 +5,7 @@ import {requiredValidator, minValidator, maxValidator} from "../../validators/ru
 import Input from "../Input/input.jsx";
 import {AppContext} from "../../context/AppContext.jsx";
 import {AuthContext} from "../../context/AuthContext.jsx";
+import DynamicIcon from "../../icon/DynamicIcon.jsx";
 
 
 function Login(props) {
@@ -24,6 +25,11 @@ function Login(props) {
     const {isOpenLoginPopup, setIsOpenLoginPopup,isResetInput, setIsResetInput,isRegister, setIsRegister} = useContext(AppContext);
     const {login}= useContext(AuthContext);
     const [users, setUsers] = useState([]);
+    const [passwordTypeStatus , setPasswordTypeStatus] = useState('password');
+
+    useEffect(() => {
+        fetch("https://karin-shop-db.onrender.com/users").then(res => res.json()).then(data => setUsers(data)).catch(err => console.log(err));
+    },[])
 
     const checkLoginHandler = async (event) => {
         event.preventDefault()
@@ -38,10 +44,9 @@ function Login(props) {
         setIsRegister(false)
         setIsResetInput(true);
     }
-
-    useEffect(() => {
-        fetch("https://karin-shop-db.onrender.com/users").then(res => res.json()).then(data => setUsers(data)).catch(err => console.log(err));
-    },[])
+    const showPasswordHandler = (event)=> {
+        passwordTypeStatus === 'password' ? setPasswordTypeStatus('text') : setPasswordTypeStatus('password')
+    }
 
     return (
        <>
@@ -53,9 +58,9 @@ function Login(props) {
                       errorText="لطفا شماره موبایل معتبر وارد کنید"
                       validations={[requiredValidator(), minValidator(11), maxValidator(11)]}
                       onInputChange={onInputChange} resetInput={isResetInput}/>
-               <Input id="password" type="password"
+               <Input id="password" type={passwordTypeStatus}
                       validations={[requiredValidator(), minValidator(10), maxValidator(20)]} placeHolder={"رمز عبور"}
-                      onInputChange={onInputChange} resetInput={isResetInput}/>
+                      onInputChange={onInputChange} resetInput={isResetInput} IconComponent={()=> <DynamicIcon name={passwordTypeStatus === 'password' ? 'eyeSlash' : 'eye'} /> } clickEvent={showPasswordHandler}/>
                <button onClick={checkLoginHandler}
                        className={`w-full flex-center p-3 rounded-md text-white bg-blue-400 dark:bg-blue-600 mt-5 ${formState.isFormValid ? 'opacity-100 cursor-pointer' : 'opacity-20 cursor-not-allowed'}`}
                        type="submit" disabled={!formState.isFormValid}>ورود

@@ -1,8 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import Input from "../Input/input.jsx";
 import {maxValidator, minValidator, requiredValidator} from "../../validators/rules.jsx";
 import useForm from "../../hook/useForm.jsx";
 import regex from "../../validators/regex.jsx";
+import DynamicIcon from "../../icon/DynamicIcon.jsx";
+import {AppContext} from "../../context/AppContext.jsx";
 
 
 function Password() {
@@ -17,7 +19,9 @@ function Password() {
             isValid: false,
         }
     }, false)
-    const [passwordSecurity, setPasswordSecurity] = useState(0)
+    const [passwordTypeStatus , setPasswordTypeStatus] = useState('password');
+    const [repeatPasswordTypeStatus , setRepeatPasswordTypeStatus] = useState('password');
+    const {isResetInput} = useContext(AppContext);
     const [conditions, setConditions] = useState([])
     const [passCount , setPassCount] = useState(0);
 
@@ -49,6 +53,13 @@ function Password() {
         }
     }
 
+    const showPasswordHandler = (event)=> {
+        passwordTypeStatus === 'password' ? setPasswordTypeStatus('text') : setPasswordTypeStatus('password')
+    }
+
+    const showRepeatPasswordHandler = (event)=> {
+        repeatPasswordTypeStatus === 'password' ? setRepeatPasswordTypeStatus('text') : setRepeatPasswordTypeStatus('password')
+    }
 
     return (
         <form className="">
@@ -56,9 +67,9 @@ function Password() {
             <span className="block text-sm/6 text-blue-500 dark:text-gray-300 font-Dana-Medium mb-3">رمز عبور باید حداقل 8 حرفی باشد</span>
             {/* ! ================== ! Password Input  ! ================== ! */}
             <div className="">
-                <Input id="password" type="password"
+                <Input id="password" type={passwordTypeStatus}
                        validations={[requiredValidator(), minValidator(10), maxValidator(20)]} placeHolder={"رمز عبور"}
-                       onInputChange={onInputChange}/>
+                       onInputChange={onInputChange} resetInput={isResetInput} IconComponent={()=> <DynamicIcon name={passwordTypeStatus === 'password' ? 'eyeSlash' : 'eye'} /> } clickEvent={showPasswordHandler}/>
                 <div className="flex items-center gap-x-2 mt-6">
                     {
                         conditions.map((item, index) => (
@@ -77,9 +88,9 @@ function Password() {
                 </div>
             </div>
             {/* ! ================== ! Repeat Password Input  ! ================== ! */}
-            <Input id="repeatPassword" type="password"
-                   validations={[requiredValidator(), minValidator(10), maxValidator(20)]} placeHolder={"تکرار رمز عبور*"}
-                   onInputChange={onInputChange}/>
+            <Input id="repeatPassword" type={repeatPasswordTypeStatus}
+                   validations={[requiredValidator(), minValidator(10), maxValidator(20)]} placeHolder={"رمز عبور"}
+                   onInputChange={onInputChange} resetInput={isResetInput} IconComponent={()=> <DynamicIcon name={repeatPasswordTypeStatus === 'password' ? 'eyeSlash' : 'eye'} /> } clickEvent={showRepeatPasswordHandler}/>
             <button onClick={checkLoginHandler}
                     className={`w-full flex-center p-3 rounded-md text-white dark:bg-blue-600 mt-5 ${passCount === 3 ? 'opacity-100 cursor-pointer' : 'opacity-20 cursor-not-allowed'}`}
                     type="submit" disabled={passCount !== 3}>ورود
