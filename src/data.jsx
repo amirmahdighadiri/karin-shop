@@ -214,4 +214,12 @@ const services = [
     }
 ]
 
-export {category, prodcuts, brands, articles, users, filterCategory, productLiveTexts ,services}
+const userFields = [
+    {id:1 , inputId : "fullname" , lable:"نام و نام خانوادگی" , inputType : "text" , inputIcon : "pencilSquare"},
+    {id:2 , inputId : "phone" , lable:"شماره موبایل" , inputType : "text" , inputIcon : "pencilSquare"},
+    {id:3 , inputId : "email" , lable:"ایمیل" , inputType : "text" , inputIcon : "plus"},
+    {id:4 , inputId : "password" , lable:"رمز عبور" , inputType : "password" , inputIcon : "pencilSquare"},
+    {id:5 , inputId : "birthday" , lable:"تاریخ تولد" , inputType : "text" , inputIcon : "pencilSquare"}
+]
+
+export {category, prodcuts, brands, articles, users, filterCategory, productLiveTexts ,services , userFields}

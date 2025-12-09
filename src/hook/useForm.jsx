@@ -32,8 +32,11 @@ const reducers = (state, action) => {
                     isValid:true
                 }
             }
-
-            console.log(updatedInputs)
+            return {
+                ...state,
+                inputs: updatedInputs,
+                isFormValid:true
+            }
 
         }
         default :{

@@ -1,10 +1,10 @@
-import {useEffect, useReducer, useState} from "react";
+import {memo, useEffect, useReducer, useState} from "react";
 import {maxValidator, minValidator, requiredValidator} from "../../validators/rules.jsx";
 import validator from "../../validators/validator.jsx";
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case "CHANGE_USERNAME": {
+        case "CHANGE_VALUE": {
             return {
                 ...state,
                 value: action.value,
@@ -18,13 +18,20 @@ const reducer = (state, action) => {
                 isValid: validator(action.value , action.validations),
             }
         }
+        case "SET_VALUE": {
+            return {
+                ...state,
+                value: action.value,
+                isValid: true,
+            }
+        }
         default : {
             return state;
         }
     }
 }
 
-function Input({id,type,validations,onInputChange,placeHolder,errorText,resetInput , textColor , IconComponent , clickEvent}) {
+function Input({id,type, value,validations,onInputChange,placeHolder,errorText,resetInput , textColor , IconComponent , clickEvent}) {
 
     const [input, dispatch] = useReducer(reducer, {
         value: "",
@@ -39,9 +46,9 @@ function Input({id,type,validations,onInputChange,placeHolder,errorText,resetInp
     const inputChangeHandler = (event) => {
         setIsChange(true);
         dispatch({
-            type: 'CHANGE_USERNAME',
+            type: 'CHANGE_VALUE',
             value: event.target.value,
-            validations: validations
+            validations:validations
         })
     }
 
@@ -49,9 +56,18 @@ function Input({id,type,validations,onInputChange,placeHolder,errorText,resetInp
         dispatch({
             type: 'RESET',
             value: "",
-            validations: validations
         })
     }
+
+    useEffect(()=>{
+        if (value !== undefined && value !== null){
+            dispatch({
+                type: 'SET_VALUE',
+                value ,
+                validations: true
+            })
+        }
+    },[value])
 
     useEffect(() => {
         onInputChange(id, input.value, input.isValid)
@@ -81,4 +97,4 @@ function Input({id,type,validations,onInputChange,placeHolder,errorText,resetInp
     )
 }
 
-export default Input;
+export default memo(Input);
