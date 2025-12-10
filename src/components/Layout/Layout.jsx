@@ -4,6 +4,7 @@ import Header from "../Header/Header.jsx";
 import Overlay from "../Overlay/Overlay.jsx";
 import Footer from "../Footer/Footer.jsx";
 import RootContext from "../../context/RootContext.jsx";
+import Loader from "../Loader/Loader.jsx";
 
 function Layout() {
     const location = useLocation();

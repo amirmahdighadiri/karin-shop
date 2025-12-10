@@ -6,7 +6,7 @@ import SecondProductBox from "../../components/ProductBox/SecondProductBox.jsx";
 import BrandCard from "../../components/BrandCard/BrandCard.jsx";
 import {Link} from "react-router-dom";
 import {category, prodcuts, brands , articles} from "../../data.jsx";
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import Timer from "../../util/Timer.jsx";
 import {updateSwiperState} from "../../store/SwiperStore.jsx";
 import ArticleBox from "../../components/ArticleBox/ArticleBox.jsx";
@@ -26,6 +26,8 @@ import banner4 from '../../assets/images/banner/HeroBanner/4.webp'
 import banner5 from '../../assets/images/banner/DoubleBanners/1.webp'
 import banner6 from '../../assets/images/banner/DoubleBanners/2.webp'
 import Loader from "../../components/Loader/Loader.jsx";
+import {AppContext} from "../../context/AppContext.jsx";
+import WebTitle from "../../util/WebTitle.jsx";
 
 
 function Home() {
@@ -33,14 +35,19 @@ function Home() {
     const [popularProducts, setPopularProducts] = useState([]);
     const [brandsItem, setBrandsItem] = useState(brands);
     const [articlesItem, setArticlesItem] = useState(articles);
+    const {isShowLoader, setIsShowLoader}=useContext(AppContext);
 
     useEffect(()=>{
-        fetch("https://karin-shop-db.onrender.com/products").then((res)=> res.json()).then(data => setPopularProducts(data))
+        fetch("https://karin-shop-db.onrender.com/products").then((res)=> res.json()).then(data =>{
+            setPopularProducts(data)
+            setIsShowLoader(false)
+        })
     },[])
 
 
     return (
         <>
+            <WebTitle title="کارین شاپ | خانه"/>
             {/* ! ================== ! Banner ! ================== ! */}
             <section className="relative w-full lg:w-auto px-3 lg:px-0 lg:container mt-4 lg:mt-10 group">
                 <Swiper
@@ -408,8 +415,9 @@ function Home() {
                     </div>
                 </div>
             </section>
-
-            <Loader />
+            {
+                isShowLoader && <Loader />
+            }
         </>
     );
 }

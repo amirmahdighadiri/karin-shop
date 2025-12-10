@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 
-function ProductBox({title, price, dicountPercent, score, todaySend, src}) {
+function ProductBox({id,title, price, dicountPercent, score, todaySend, src}) {
     return (
         <div className="h-full bg-white dark:bg-gray-800 px-4 pt-3 pb-2 rounded-xl shadow-lg">
             {/* ! ================== ! TopBox ! ================== ! */}
@@ -23,11 +23,11 @@ function ProductBox({title, price, dicountPercent, score, todaySend, src}) {
                 </div>
             </div>
             {/* ! ================== ! Product Image ! ================== ! */}
-            <Link to="/" className="flex-center">
+            <Link to={`/products/${id}`} className="flex-center">
                 <img src={`${import.meta.env.BASE_URL}${src}`} alt="" className="w-44 h-32 object-cover" loading={"lazy"}/>
             </Link>
             {/* ! ================== ! Product Title ! ================== ! */}
-            <Link to="/" className="text-gray-700 dark:text-gray-300 text-sm line-clamp-2 mt-1">
+            <Link to={`/products/${id}`} className="text-gray-700 dark:text-gray-300 text-sm line-clamp-2 mt-1">
                 {title}
             </Link>
             {/* ! ================== ! Product Price Wrapper ! ================== ! */}

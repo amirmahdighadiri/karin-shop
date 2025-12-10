@@ -6,6 +6,7 @@ import Input from "../Input/input.jsx";
 import {AppContext} from "../../context/AppContext.jsx";
 import {AuthContext} from "../../context/AuthContext.jsx";
 import DynamicIcon from "../../icon/DynamicIcon.jsx";
+import WebTitle from "../../util/WebTitle.jsx";
 
 
 function Login(props) {
@@ -50,6 +51,7 @@ function Login(props) {
 
     return (
        <>
+           <WebTitle title="کارین شاپ | ورود"/>
            {/* ! ================== ! Form  ! ================== ! */}
            <form className="mt-10">
                <span className="block text-gray-800 dark:text-gray-100 text-lg font-Dana-Medium mb-2">ورود | ثبت‌نام</span>

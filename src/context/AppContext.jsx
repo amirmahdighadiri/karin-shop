@@ -16,6 +16,7 @@ function AppProvider({children}) {
     const [lastUrl, setLastUrl] = useState("");
     const [isOpenGallery, setIsOpenGallery] = useState(false);
     const [isOpenDasboardMenu, setIsOpenDasboardMenu] = useState(false);
+    const [isShowLoader, setIsShowLoader] = useState(true);
     const location = useLocation();
 
     const [theme, setTheme] = useState(() => {
@@ -38,7 +39,7 @@ function AppProvider({children}) {
             overlay, setOverlay, isShowCityBox,
             setIsShowCityBox,isShowResultSearchBox, setIsShowResultSearchBox,openMenu, setOpenMenu ,
             theme, setTheme,isOpenLoginPopup, setIsOpenLoginPopup,isResetInput, setIsResetInput ,isRegister, setIsRegister,isOpenFilterBox, setIsOpenFilterBox,
-            isOpenSortBox, setIsOpenSortBox,lastUrl, setLastUrl , isOpenGallery, setIsOpenGallery ,isOpenDasboardMenu, setIsOpenDasboardMenu
+            isOpenSortBox, setIsOpenSortBox,lastUrl, setLastUrl , isOpenGallery, setIsOpenGallery ,isOpenDasboardMenu, setIsOpenDasboardMenu , isShowLoader, setIsShowLoader
         }}>
             {children}
         </AppContext.Provider>

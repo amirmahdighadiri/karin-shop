@@ -2,7 +2,7 @@ import React, {memo} from 'react';
 import {Link} from "react-router-dom";
 import Tooltip from "../Tooltip/Tooltip.jsx";
 
-function SecondProductBox({title, price, dicountPercent, score, todaySend, src,hoverSrc}) {
+function SecondProductBox({id,title, price, dicountPercent, score, todaySend, src,hoverSrc}) {
     return (
         <div className="h-full bg-white dark:bg-gray-800 px-4 pt-3 pb-2 rounded-xl shadow-lg group/image">
             {/* ! ================== ! TopBox ! ================== ! */}
@@ -30,12 +30,12 @@ function SecondProductBox({title, price, dicountPercent, score, todaySend, src,h
                 <span className={`relative text-blue-500 dark:text-blue-400 font-Dana-Medium text-sm before:absolute before:-left-4 before:top-0 before:bottom-0 before:my-auto before:content-[''] before:w-1 before:h-8 before:rounded-r-lg before:bg-blue-500 dark:before:bg-blue-400`}>70% تخفیف‌</span>
             </div>
             {/* ! ================== ! Product Image ! ================== ! */}
-            <Link to="/" className="flex-center *:transition-all *:duration-500">
+            <Link to={`/products/${id}`} className="flex-center *:transition-all *:duration-500">
                 <img src={`${import.meta.env.BASE_URL}${src}`} alt={title} className="w-36 h-32 sm:w-44 lg:w-60 lg:h-52 object-cover opacity-100 group-hover/image:opacity-0 absolute" loading={"lazy"}/>
                 <img src={`${import.meta.env.BASE_URL}${hoverSrc}`} alt={title} className="w-36 h-32 sm:w-44 lg:w-60 lg:h-52 object-cover opacity-0 group-hover/image:opacity-100" loading={"lazy"}/>
             </Link>
             {/* ! ================== ! Product Title ! ================== ! */}
-            <Link to="/" className="text-gray-700 dark:text-gray-300 text-sm line-clamp-2 mt-1">
+            <Link to={`/products/${id}`} className="text-gray-700 dark:text-gray-300 text-sm line-clamp-2 mt-1">
                 {title}
             </Link>
             {/* ! ================== ! Product Price Wrapper ! ================== ! */}

@@ -21,6 +21,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import ProductGallery from "../../components/ProductGallery/ProductGallery.jsx";
 import {AuthContext} from "../../context/AuthContext.jsx";
+import WebTitle from "../../util/WebTitle.jsx";
 
 
 function ProductInfo(props) {
@@ -166,6 +167,7 @@ function ProductInfo(props) {
 
     return (
         <section className="container">
+            <WebTitle title={`کارین شاپ | ${product.title}`}/>
             {/* ! ================== ! Beardcrumb  ! ================== ! */}
             <div className="flex items-center gap-x-2 mt-8 mr-4">
                 <Link to="/"
@@ -518,13 +520,12 @@ function ProductInfo(props) {
                     </div>}
                 </div>
             </div>
-            {
-                isShowPopup && <LoginPopup title="خطا !" description="برای افزودن محصول به سبد خرید لازم است وارد حساب خود شوید." redirect="/auth-layout/login">
+            {/* ! ================== ! Popup ! ================== ! */}
+            {isShowPopup && <LoginPopup title="خطا !" description="برای افزودن محصول به سبد خرید لازم است وارد حساب خود شوید." redirect="/auth-layout/login">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-18 text-red-500">
                         <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z" clipRule="evenodd" />
                     </svg>
-                </LoginPopup>
-            }
+                </LoginPopup>}
         </section>
     );
 }

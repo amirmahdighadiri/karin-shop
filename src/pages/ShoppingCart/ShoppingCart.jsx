@@ -2,6 +2,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
 import ShoppingCartBox from "../../components/ShoppingCartBox/ShoppingCartBox.jsx";
 import {AuthContext} from "../../context/AuthContext.jsx";
+import WebTitle from "../../util/WebTitle.jsx";
 
 function ShoppingCart(props) {
     const [userShoppingProducts,setUserShoppingProducts] = useState([]);
@@ -60,6 +61,7 @@ function ShoppingCart(props) {
 
     return (
         <section className="container">
+            <WebTitle title="کارین شاپ | سبد خرید"/>
             {/* ! ================== ! Beardcrumb  ! ================== ! */}
             <div className="flex items-center gap-x-2 mt-8 mr-4">
                 <Link to="/" className="inline-flex items-center gap-x-1 text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white transition-all">
@@ -79,8 +81,7 @@ function ShoppingCart(props) {
                 </span>
             </div>
             {/* ! ================== ! Shopping Cart Wrapper  ! ================== ! */}
-            {
-                userShoppingProducts.length > 0 ?
+            {userShoppingProducts.length > 0 ?
                     <div className="grid grid-cols-12 gap-4 mt-5">
                         {/* ! ================== ! Shopping Item Wrapper ! ================== ! */}
                         <div className="col-span-12 xl:col-span-9 bg-white dark:bg-gray-800 p-4 rounded-lg">

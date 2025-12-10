@@ -21,28 +21,28 @@ import UserInformation from "./components/DashboardPages/UserInformation/UserInf
 const routes = [
     {
         path: "/", element: <Layout/>, children: [
-            {index: true, element: <Home/>, title: "کارین شاپ | خانه"},
+            {index: true, element: <Home/>},
             {
                 path: "auth-layout", element: <AuthLayout/>, children: [
-                    {path: "login", element: <Login/>, title: "کارین شاپ | ورود"},
-                    {path: "register", element: <Register/>, title: "کارین شاپ | ثبت نام"},
-                    {path: "password", element: <Password/>, title: "کارین شاپ | تغییر رمز عبور"}
+                    {path: "login", element: <Login/>},
+                    {path: "register", element: <Register/>},
+                    {path: "password", element: <Password/>}
                 ]
             },
-            {path: "products", element: <Products/>, title: "کارین شاپ | محصولات"},
-            {path: "products/:id", element: <ProductInfo/>, title: "کارین شاپ | محصولات"},
-            {path: "shopping-cart", element: <ShoppingCart/>, title: "کارین شاپ | سبد خرید"},
-            {path: "dashboard", element: <Dashboard/>, title: "کارین شاپ | حساب کاربری" , children: [
+            {path: "products", element: <Products/>},
+            {path: "products/:id", element: <ProductInfo/>},
+            {path: "shopping-cart", element: <ShoppingCart/>},
+            {path: "dashboard", element: <Dashboard/>, children: [
                     {path: "order" , element: <OrderTable/>},
                     {path: "address" , element: <UserAddress/>},
                     {path: "favorite" , element: <FavoriteProducts />},
                     {path: "message" , element: <UserMessage />},
                     {path: "user-info" , element: <UserInformation />},
                 ]},
-            {path: "about-us", element: <AboutUS/>, title: "کارین شاپ | درباره ما"},
-            {path: "faq", element: <FAQ/>, title: "کارین شاپ | سوالات متداول"},
-            {path: "contact-us", element: <ContactUs/>, title: "کارین شاپ | تماس با ما"},
-            {path: "*", element: <Error/>, title: "کارین شاپ | صفحه ای یافت نشد"}
+            {path: "about-us", element: <AboutUS/>},
+            {path: "faq", element: <FAQ/>},
+            {path: "contact-us", element: <ContactUs/>},
+            {path: "*", element: <Error/>}
         ]
     },
 

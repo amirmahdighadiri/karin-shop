@@ -4,12 +4,14 @@ import Input from "../../components/Input/input.jsx";
 import ContactForm from "../../components/Forms/ContactForm.jsx";
 import Notification from "../../components/Notification/Notification.jsx";
 import DynamicIcon from "../../icon/DynamicIcon.jsx";
+import WebTitle from "../../util/WebTitle.jsx";
 
 function ContactUs(props) {
     const [isOpenModal, setIsOpenModal] = useState(false);
     const [messageStatus , setMessageStatus] = useState(false);
     return (
         <section className="container">
+            <WebTitle title="کارین شاپ |  تماس با ما"/>
             {/* ! ================== ! Beardcrumb  ! ================== ! */}
             <div className="flex items-center gap-x-2 mt-8 mr-4">
                 <Link to="/" className="inline-flex items-center gap-x-1 text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white transition-all">
@@ -30,20 +32,9 @@ function ContactUs(props) {
             </div>
             {/* ! ================== ! Contact US From ! ================== ! */}
             <ContactForm  setIsOpenModal={setIsOpenModal} setMessageStatus={setMessageStatus} />
-
-            {
-                isOpenModal && messageStatus && (
-                    <Notification title="موفق" message="پبام شما با موفقیت ارسال شد" isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal}  IconComponent={() => <DynamicIcon name="tickCircle" />} />
-                )
-            }
-
-            {
-                isOpenModal && !messageStatus && (
-                    <Notification title="خطا" message="لطفا دوباره تلاش کنید"  IconComponent={() => <DynamicIcon name="closeCircle" />} />
-                )
-            }
-
-
+            {/* ! ================== ! Modals ! ================== ! */}
+            {isOpenModal && messageStatus && (<Notification title="موفق" message="پبام شما با موفقیت ارسال شد" isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal}  IconComponent={() => <DynamicIcon name="tickCircle" />} />)}
+            {isOpenModal && !messageStatus && (<Notification title="خطا" message="لطفا دوباره تلاش کنید"  IconComponent={() => <DynamicIcon name="closeCircle" />} />)}
         </section>
     );
 }

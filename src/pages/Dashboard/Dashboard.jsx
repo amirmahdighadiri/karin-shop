@@ -4,6 +4,7 @@ import {AuthContext} from "../../context/AuthContext.jsx";
 import {NavLink, Outlet, useLocation} from "react-router-dom";
 // Images
 import userProfile from '../../assets/images/profile/user.png'
+import WebTitle from "../../util/WebTitle.jsx";
 
 
 
@@ -35,6 +36,7 @@ function Dashboard() {
 
     return (
         <section className="container">
+            <WebTitle title="کارین شاپ | حساب کاربری"/>
             {/* ! ================== ! Wrapper ! ================== ! */}
             <div className="grid grid-cols-12 gap-x-8 mt-10">
                 {/* ! ================== ! Dashboard Menu ! ================== ! */}

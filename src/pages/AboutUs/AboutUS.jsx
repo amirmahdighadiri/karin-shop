@@ -3,10 +3,12 @@ import {Link} from "react-router-dom";
 // Images
 import aboutPageimage from "../../assets/images/about/about-page.png";
 import React from "react";
+import WebTitle from "../../util/WebTitle.jsx";
 
 function AboutUs() {
     return (
         <section className="container">
+            <WebTitle title="کارین شاپ | درباره ما"/>
             {/* ! ================== ! Beardcrumb  ! ================== ! */}
             <div className="flex items-center gap-x-2 mt-8 mr-4">
                 <Link to="/" className="inline-flex items-center gap-x-1 text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white transition-all">

@@ -1,8 +1,10 @@
 import {Link} from "react-router-dom";
+import WebTitle from "../../util/WebTitle.jsx";
 
 function Error(props) {
     return (
         <section className="container flex flex-col items-center justify-center">
+            <WebTitle title="کارین شاپ | صفحه مورد نظر یافت نشد"/>
             {/* ! ================== ! Error Image ! ================== ! */}
             <div className="my-10">
                 <svg xmlns="http://www.w3.org/2000/svg" width="672.532" height="738.394" viewBox="0 0 672.532 738.394" className="w-full sm:w-125 h-125">

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import ReactDOM from "react-dom";
+import {AppContext} from "../../context/AppContext.jsx";
 
 function Loader() {
     return ReactDOM.createPortal (
@@ -13,7 +14,7 @@ function Loader() {
                     </pattern>
                 </defs>
             </svg>
-            <div className="w-4/12 p-5 bg-gray-200 dark:bg-gray-800 rounded-lg">
+            <div className="w-70 p-5 bg-gray-200 dark:bg-gray-800 rounded-lg">
                 <p className="font-Morabba text-4xl text-zinc-900 dark:text-zinc-100 mb-5 text-center"><span className="text-blue-500">کارین</span> شاپ </p>
                 <div className="loader"></div>
             </div>

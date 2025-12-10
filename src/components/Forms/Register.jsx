@@ -6,6 +6,7 @@ import useForm from "../../hook/useForm.jsx";
 import {AppContext} from "../../context/AppContext.jsx";
 import {AuthContext} from "../../context/AuthContext.jsx";
 import DynamicIcon from "../../icon/DynamicIcon.jsx";
+import WebTitle from "../../util/WebTitle.jsx";
 
 
 function Register(props) {
@@ -75,39 +76,36 @@ function Register(props) {
     }
 
     return (
-        <form className="mt-10">
+        <>
+            <WebTitle title="کارین شاپ | ثبت نام"/>
+            {/* ! ================== ! Form  ! ================== ! */}
+            <form className="mt-10">
 
-            <span className="block text-gray-800 dark:text-gray-100 text-lg font-Dana-Medium mb-2">ثبت‌نام</span>
-            <span className="block text-sm/6 text-blue-500 dark:text-gray-300 font-Dana-Medium mb-3">لطفا اطلاعات خود را با دقت وارد کنید</span>
-            {/* ! ================== ! Inputs  ! ================== ! */}
-            <div className="space-y-4">
-                <Input id="username" type="text" validations={[requiredValidator(), minValidator(10), maxValidator(20)]}
-                       placeHolder={"نام کاربری"} onInputChange={onInputChange} resetInput={isResetInput}/>
-                <Input id="phone" type="text" validations={[phoneNumberValidator()]} placeHolder={"شماره موبایل"}
-                       onInputChange={onInputChange} resetInput={isResetInput}/>
-                <Input id="fullName" type="text"
-                       validations={[requiredValidator(), minValidator(3), maxValidator(20)]}
-                       placeHolder={"نام و نام خانوادگی"} onInputChange={onInputChange} resetInput={isResetInput}/>
-                <Input id="password" type={passwordTypeStatus}
-                       validations={[requiredValidator(), minValidator(10), maxValidator(20)]} placeHolder={"رمز عبور"}
-                       onInputChange={onInputChange} resetInput={isResetInput} IconComponent={()=> <DynamicIcon name={passwordTypeStatus === 'password' ? 'eyeSlash' : 'eye'} /> } clickEvent={showPasswordHandler}/>
-            </div>
-            <button
-                onClick={registerHandler}
-                className={`w-full flex-center p-3 rounded-md text-white dark:bg-blue-600 mt-5 ${formState.isFormValid ? 'opacity-100 cursor-pointer' : 'opacity-20 cursor-not-allowed'}`}
-                type="submit"
-                disabled={!formState.isFormValid}
-            >
-                ثبت نام
-            </button>
-            <p className="mt-8 text-center text-sm/6 text-gray-500 dark:text-gray-300">
-                ورود شما به معنای پذیرش
-                <Link to="" className="text-blue-400"> قوانین سایت </Link>
-                است
-            </p>
-        </form>
-
-
+                <span className="block text-gray-800 dark:text-gray-100 text-lg font-Dana-Medium mb-2">ثبت‌نام</span>
+                <span className="block text-sm/6 text-blue-500 dark:text-gray-300 font-Dana-Medium mb-3">لطفا اطلاعات خود را با دقت وارد کنید</span>
+                {/* ! ================== ! Inputs  ! ================== ! */}
+                <div className="space-y-4">
+                    <Input id="username" type="text" validations={[requiredValidator(), minValidator(10), maxValidator(20)]}
+                           placeHolder={"نام کاربری"} onInputChange={onInputChange} resetInput={isResetInput}/>
+                    <Input id="phone" type="text" validations={[phoneNumberValidator()]} placeHolder={"شماره موبایل"}
+                           onInputChange={onInputChange} resetInput={isResetInput}/>
+                    <Input id="fullName" type="text"
+                           validations={[requiredValidator(), minValidator(3), maxValidator(20)]}
+                           placeHolder={"نام و نام خانوادگی"} onInputChange={onInputChange} resetInput={isResetInput}/>
+                    <Input id="password" type={passwordTypeStatus}
+                           validations={[requiredValidator(), minValidator(10), maxValidator(20)]} placeHolder={"رمز عبور"}
+                           onInputChange={onInputChange} resetInput={isResetInput} IconComponent={()=> <DynamicIcon name={passwordTypeStatus === 'password' ? 'eyeSlash' : 'eye'} /> } clickEvent={showPasswordHandler}/>
+                </div>
+                <button onClick={registerHandler} className={`w-full flex-center p-3 rounded-md text-white dark:bg-blue-600 mt-5 ${formState.isFormValid ? 'opacity-100 cursor-pointer' : 'opacity-20 cursor-not-allowed'}`} type="submit" disabled={!formState.isFormValid}>
+                    ثبت نام
+                </button>
+                <p className="mt-8 text-center text-sm/6 text-gray-500 dark:text-gray-300">
+                    ورود شما به معنای پذیرش
+                    <Link to="" className="text-blue-400"> قوانین سایت </Link>
+                    است
+                </p>
+            </form>
+        </>
     );
 }
 
