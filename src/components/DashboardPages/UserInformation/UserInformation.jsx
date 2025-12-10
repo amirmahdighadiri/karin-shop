@@ -54,7 +54,7 @@ function UserInformation() {
 
                 {
                     userFields.map(field =>(
-                        <div key={field.id} className="col-span-6">
+                        <div key={field.id} className="col-span-12 md:col-span-6">
                             <span className="inline-block mb-2 text-zinc-900 dark:text-zinc-100 text-sm">{field.lable}</span>
                             <Input id={field.inputId} type={field.inputType} value={formState?.inputs?.[field.inputId]?.value} onInputChange={onInputChange} validations={[minValidator(11), maxValidator(11)]} IconComponent={()=> <DynamicIcon name={field.inputIcon} />} clickEvent={openEditPopupHandler} textColor="text-gray-400"/>
                         </div>

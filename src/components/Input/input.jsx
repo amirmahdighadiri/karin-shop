@@ -15,7 +15,7 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 value: action.value,
-                isValid: validator(action.value , action.validations),
+                isValid: false,
             }
         }
         case "SET_VALUE": {

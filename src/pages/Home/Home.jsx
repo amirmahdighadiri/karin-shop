@@ -25,6 +25,7 @@ import banner3 from '../../assets/images/banner/HeroBanner/3.gif'
 import banner4 from '../../assets/images/banner/HeroBanner/4.webp'
 import banner5 from '../../assets/images/banner/DoubleBanners/1.webp'
 import banner6 from '../../assets/images/banner/DoubleBanners/2.webp'
+import Loader from "../../components/Loader/Loader.jsx";
 
 
 function Home() {
@@ -407,6 +408,8 @@ function Home() {
                     </div>
                 </div>
             </section>
+
+            <Loader />
         </>
     );
 }

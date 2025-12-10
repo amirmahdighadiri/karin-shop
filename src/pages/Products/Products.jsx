@@ -173,7 +173,7 @@ function Products(props) {
             {/* ! ================== ! Page Content  ! ================== ! */}
             <div className="grid grid-cols-12 gap-x-4 mt-5">
                 {/* ! ================== ! Filter Wrapper ! ================== ! */}
-                <div className={`fixed z-20 right-0 left-0 bottom-0 lg:sticky lg:top-1 ${isOpenFilterBox ? 'lg:translate-y-0' : 'translate-y-full lg:translate-y-0'} col-span-12 lg:col-span-3 dark:bg-gray-800 bg-white rounded-lg shadow p-4 self-start transition-all`}>
+                <div className={`fixed z-20 right-0 left-0 bottom-0 lg:sticky lg:top-1 ${isOpenFilterBox ? 'lg:translate-y-0 pb-10' : 'translate-y-full lg:translate-y-0 pb-0'} col-span-12 lg:col-span-3 dark:bg-gray-800 bg-white rounded-lg shadow p-4 self-start transition-all`}>
                     {/* ! ================== ! Filter Title  ! ================== ! */}
                     <div className="flex items-center justify-between">
                         <span className="text-gray-700 dark:text-gray-200 text-lg">فیلترها</span>
@@ -276,7 +276,7 @@ function Products(props) {
                 {/* ! ================== ! Products Wrapper ! ================== ! */}
                 <div className="col-span-12 lg:col-span-9">
                     {/* ! ================== ! Sort Wrapper ! ================== ! */}
-                    <div className={`fixed z-20 lg:static right-0 left-0 bottom-0 ${isOpenSortBox ? 'lg:translate-y-0' : 'translate-y-full lg:translate-y-0'} flex flex-col-reverse lg:flex-row lg:items-center justify-between lg:mb-6 p-4 lg:p-0 bg-white dark:bg-gray-800 lg:dark:bg-transparent transition-all`}>
+                    <div className={`fixed z-20 lg:static right-0 left-0 bottom-0 ${isOpenSortBox ? 'lg:translate-y-0' : 'translate-y-full lg:translate-y-0'} flex flex-col-reverse lg:flex-row lg:items-center justify-between lg:mb-6 p-4 lg:p-0 bg-white dark:bg-gray-800 lg:dark:bg-transparent transition-all rounded-lg lg:rounded-none`}>
                         {/* ! ================== ! Sort Menu  ! ================== ! */}
                         <div className="flex items-center justify-center gap-x-5">
                             {/* ! ================== ! Sort Menu Logo ! ================== ! */}

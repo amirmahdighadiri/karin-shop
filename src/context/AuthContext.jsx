@@ -38,7 +38,6 @@ function AuthProvider({children}) {
 
     },[])
     const logout = useCallback(() => {
-        console.log(1)
         localStorage.removeItem("userID");
         localStorage.removeItem("shoppingCart");
         setIsLogin(false);
@@ -80,11 +79,11 @@ function AuthProvider({children}) {
         })
         /* ! ================== ! Update Server And Local ! ================== ! */
         finalCart.map(async item =>{
-            await fetch(`https://karin-shop-db.onrender.com/${item.id}` , {
+            await fetch(`https://karin-shop-db.onrender.com/products/${item.id}` , {
                 method: 'PUT',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(item),
-            }).then(res =>res.json()).then(data =>console.log(data)).catch(err =>{console.log(err)})
+            }).then(res =>res.json()).catch(err =>{console.log(err)})
         })
         localStorage.setItem("shoppingCart" , JSON.stringify(finalCart));
         getProductCount()

@@ -37,7 +37,7 @@ function Login(props) {
 
 
         if (hasUser.length > 0) {
-            login(hasUser[0])
+            await login(hasUser[0])
         }
 
         setIsOpenLoginPopup(true)
