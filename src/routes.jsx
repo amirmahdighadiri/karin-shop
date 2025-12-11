@@ -17,6 +17,7 @@ import UserAddress from "./components/DashboardPages/UserAddress/UserAddress.jsx
 import FavoriteProducts from "./components/DashboardPages/FavoriteProducts/FavoriteProducts.jsx";
 import UserMessage from "./components/DashboardPages/UserMessage/UserMessage.jsx";
 import UserInformation from "./components/DashboardPages/UserInformation/UserInformation.jsx";
+import Maintenance from "./pages/Maintenance/Maintenance.jsx";
 
 const routes = [
     {
@@ -42,6 +43,7 @@ const routes = [
             {path: "about-us", element: <AboutUS/>},
             {path: "faq", element: <FAQ/>},
             {path: "contact-us", element: <ContactUs/>},
+            {path: "maintenance" , element: <Maintenance/>},
             {path: "*", element: <Error/>}
         ]
     },

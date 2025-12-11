@@ -8,14 +8,16 @@ import Loader from "../Loader/Loader.jsx";
 
 function Layout() {
     const location = useLocation();
+    const noHeaderPaths = ["/auth-layout", "/maintenance"];
+    const noFooterPaths = ["/auth-layout", "/dashboard", "/maintenance"];
 
     return (
         <RootContext>
-            {!location.pathname.toLowerCase().includes("/auth-layout") && <Header/>}
+            {!noHeaderPaths.some(path => path.includes(path)) && <Header />}
             <main>
                 <Outlet />
             </main>
-            {!(location.pathname.toLowerCase().includes("/auth-layout") || location.pathname.toLowerCase().includes("/dashboard")) && <Footer/>}
+            {!noFooterPaths.some(path => path.includes(path)) && <Footer />}
             <Overlay />
         </RootContext>
     );
