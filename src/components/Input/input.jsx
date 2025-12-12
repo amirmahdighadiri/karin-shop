@@ -79,7 +79,7 @@ function Input({id,type, value,validations,onInputChange,placeHolder,errorText,r
 
 
     const clickHandler = (event)=>{
-        clickEvent(event)
+        clickEvent(event , id)
     }
 
     return (
@@ -91,7 +91,12 @@ function Input({id,type, value,validations,onInputChange,placeHolder,errorText,r
             {errorText && <span className={`block text-red-500 dark:text-rose-500 text-sm mt-2.5 pr-2 pb-2`}>
                     {input.value.length === 0 && isChange ? 'این فیلد نمی‌تواند خالی باشد': !input.isValid && isChange ? 'لطفا شماره موبایل معتبر وارد کنید' : ''}
                 </span>}
-            {IconComponent && <button type="button" className="absolute left-3 top-1/2 -translate-y-1/2 my-auto text-gray-400 cursor-pointer outline-none" onClick={clickHandler}><IconComponent /></button>}
+            {IconComponent && <button type="button" className="absolute left-3 top-1/2 -translate-y-1/2 my-auto text-gray-400 cursor-pointer outline-none" onClick={clickHandler}>
+                 <IconComponent />
+            </button>}
+            {!IconComponent && <button type="button" className="absolute left-3 top-1/2 -translate-y-1/2 my-auto text-zinc-100 bg-blue-500 px-3 py-1 rounded-lg text-sm cursor-pointer outline-none" onClick={clickHandler}>
+                ثبت
+            </button>}
         </div>
 
     )

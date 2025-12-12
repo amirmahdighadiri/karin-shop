@@ -1,8 +1,17 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import ReactDOM from "react-dom";
 import {AppContext} from "../../context/AppContext.jsx";
 
 function Loader() {
+
+    useEffect(() => {
+        document.body.className = "min-h-screen overflow-hidden";
+
+        return () => {
+            document.body.className = "";
+        };
+    }, []);
+
     return ReactDOM.createPortal (
         <div className="fixed inset-0 z-20 flex-center min-h-screen bg-white dark:bg-gray-900">
             {/* ! ================== ! Background Effect ! ================== ! */}

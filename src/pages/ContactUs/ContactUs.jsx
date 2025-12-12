@@ -7,7 +7,7 @@ import DynamicIcon from "../../icon/DynamicIcon.jsx";
 import WebTitle from "../../util/WebTitle.jsx";
 
 function ContactUs(props) {
-    const [isOpenModal, setIsOpenModal] = useState(false);
+    const [isOpenNotification, setIsOpenNotification] = useState(false);
     const [messageStatus , setMessageStatus] = useState(false);
     return (
         <section className="container">
@@ -33,8 +33,8 @@ function ContactUs(props) {
             {/* ! ================== ! Contact US From ! ================== ! */}
             <ContactForm  setIsOpenModal={setIsOpenModal} setMessageStatus={setMessageStatus} />
             {/* ! ================== ! Modals ! ================== ! */}
-            {isOpenModal && messageStatus && (<Notification title="موفق" message="پبام شما با موفقیت ارسال شد" isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal}  IconComponent={() => <DynamicIcon name="tickCircle" />} />)}
-            {isOpenModal && !messageStatus && (<Notification title="خطا" message="لطفا دوباره تلاش کنید"  IconComponent={() => <DynamicIcon name="closeCircle" />} />)}
+            {isOpenNotification && messageStatus && (<Notification title="موفق" message="پبام شما با موفقیت ارسال شد" isOpenNotification={isOpenNotification} setIsOpenNotificatio={setIsOpenNotification}  IconComponent={() => <DynamicIcon name="tickCircle" />} />)}
+            {isOpenNotification && !messageStatus && (<Notification title="خطا" message="لطفا دوباره تلاش کنید" isOpenNotification={isOpenNotification} setIsOpenNotificatio={setIsOpenNotification}  IconComponent={() => <DynamicIcon name="closeCircle" />} />)}
         </section>
     );
 }

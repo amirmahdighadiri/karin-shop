@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import ReactDOM from "react-dom";
 
-function Notification({title, message, IconComponent, setIsOpenModal, isOpenModal}) {
+function Notification({title, message, IconComponent, setIsOpenNotification, isOpenNotification}) {
     const [modalTopPosition, setModalTopPosition] = useState(0);
 
     useEffect(() => {
@@ -9,7 +9,7 @@ function Notification({title, message, IconComponent, setIsOpenModal, isOpenModa
         setModalTopPosition(window.scrollY + 20)
 
         const closeModalTimer = setTimeout(() => {
-            setIsOpenModal(false)
+            setIsOpenNotification(false)
         }, 2700)
 
         const changgePositionTimer = setTimeout(() => {

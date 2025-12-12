@@ -6,8 +6,8 @@ function Maintenance(props) {
             <div className="">
                 <img src={maintenanceImage} alt="Maintenance" className=""/>
             </div>
-            <h2 className="font-Dana-DemiBold text-zinc-900 dark:text-zinc-100 text-2xl text-center">سایت در حال بروزرسانی میباشد.</h2>
-            <p className="text-blue-400 text-center">ما به زودی باز حواهیم گشت!</p>
+            <h2 className="font-Dana-DemiBold text-zinc-900 dark:text-zinc-100 text-lg md:text-2xl text-center mb-2">سایت در حال بروزرسانی میباشد.</h2>
+            <p className="text-blue-400 text-center text-sm md:text-base">ما به زودی باز حواهیم گشت!</p>
         </section>
     );
 }
