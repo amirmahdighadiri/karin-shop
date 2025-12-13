@@ -6,7 +6,7 @@ import DynamicIcon from "../../../icon/DynamicIcon.jsx";
 import {AuthContext} from "../../../context/AuthContext.jsx";
 import {userFields} from "../../../data.jsx";
 import {AppContext} from "../../../context/AppContext.jsx";
-import AcceptModal from "../../AcceptModal/AcceptModal.jsx";
+import AcceptModal from "../../Modals/AcceptModal/AcceptModal.jsx";
 import Notification from "../../Notification/Notification.jsx";
 
 function UserInformation() {

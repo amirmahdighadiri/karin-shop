@@ -5,7 +5,7 @@ import Overlay from "../Overlay/Overlay.jsx";
 import Footer from "../Footer/Footer.jsx";
 import RootContext from "../../context/RootContext.jsx";
 import Loader from "../Loader/Loader.jsx";
-import AcceptModal from "../AcceptModal/AcceptModal.jsx";
+import AcceptModal from "../Modals/AcceptModal/AcceptModal.jsx";
 
 function Layout() {
     const location = useLocation();

@@ -11,7 +11,7 @@ function UserMessage(props) {
                     {/* ! ================== ! Message Title ! ================== ! */}
                     <h3 className="text-blue-500 font-Dana-DemiBold lg:text-lg mb-5">پارسا وصالی عزیز سفارش شما با شماره پیگیری #۱۲۳۲۲۴ ارسال شد</h3>
                     {/* ! ================== ! Message Details ! ================== ! */}
-                    <div className="flex flex-col gap-y-4 items-center justify-between">
+                    <div className="flex flex-col md:flex-row gap-y-4 items-center justify-between">
                         <p className="flex items-center gap-x-2 text-gray-400">
                             <span className="">۱۴۰۴/۳/۹</span>
                             <span className="">|</span>

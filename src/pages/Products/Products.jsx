@@ -31,6 +31,9 @@ function Products(props) {
     const [isFiltered, setIsFiltered] = useState(false);
     const [filteredProducts, setFilteredProducts] = useState([])
     const [mode, setMode] = useState("")
+    const [totalPages, setTotalPages] = useState(0)
+    const itemsPerPage = 5
+
 
 
     const filterCahngeHandler = name => {
@@ -149,7 +152,9 @@ function Products(props) {
             }
         }
     }, [sort,products])
-
+    useEffect(() => {
+        setTotalPages(Math.ceil(products.length / itemsPerPage))
+    },[products])
     return (
         <section className="container">
             <WebTitle title="کارین شاپ | محصولات"/>
@@ -353,6 +358,10 @@ function Products(props) {
                         }
                     </div>
                 </div>
+            </div>
+            {/* ! ================== ! Pagination Button Wrapper  ! ================== ! */}
+            <div className="">
+
             </div>
         </section>
     );

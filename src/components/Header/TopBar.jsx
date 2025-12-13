@@ -171,7 +171,7 @@ function TopBar(props) {
                     <span className={`${isLogin ? 'block' : 'hidden'}`}>{userInfo.fullname}</span>
                     {/* ! ================== ! Profile Submenu ! ================== ! */}
                     <div className={`${isLogin ? 'block' : 'hidden'} absolute z-10 top-20 group-hover:top-12 left-1/2 -translate-x-1/2 flex flex-col gap-y-3 border border-gray-100 dark:border-transparent w-52 p-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 invisible opacity-0 group-hover:visible group-hover:opacity-100 rounded-lg transition-all delay-100 *:py-1.5 *:px-2 *:rounded-lg *:transition-all`}>
-                        <Link to="/" className="flex items-center gap-x-2 hover:bg-blue-500 hover:text-gray-100">
+                        <Link to="/dashboard/order" className="flex items-center gap-x-2 hover:bg-blue-500 hover:text-gray-100">
                             <svg xmlns="http://www.w3.org/2000/svg" id="user" fill="none" stroke="currentColor"
                                  strokeWidth="1.5" className="size-6" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round"
@@ -179,7 +179,7 @@ function TopBar(props) {
                             </svg>
                             <span className="">سفارشات من</span>
                         </Link>
-                        <Link to="/" className="flex items-center gap-x-2 hover:bg-blue-500 hover:text-gray-100">
+                        <Link to="/dashboard/message" className="flex items-center gap-x-2 hover:bg-blue-500 hover:text-gray-100">
                             <svg xmlns="http://www.w3.org/2000/svg" id="envelope" fill="none" stroke="currentColor"
                                  strokeWidth="1.5" className="size-6" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round"
@@ -187,7 +187,7 @@ function TopBar(props) {
                             </svg>
                             <span className="">لیست پیام ها</span>
                         </Link>
-                        <Link to="/dashboard" className="flex items-center gap-x-2 hover:bg-blue-500 hover:text-gray-100">
+                        <Link to="/dashboard/user-info" className="flex items-center gap-x-2 hover:bg-blue-500 hover:text-gray-100">
                             <svg xmlns="http://www.w3.org/2000/svg" id="cog" fill="none" stroke="currentColor"
                                  strokeWidth="1.5" className="size-6" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round"
