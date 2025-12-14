@@ -9,6 +9,7 @@ import {filterCategory} from "../../data.jsx";
 import time from '../../assets/images/filter-image/time.png'
 import shop from '../../assets/images/filter-image/shop.png'
 import WebTitle from "../../util/WebTitle.jsx";
+import ProductPagination from "../../components/ProductPagination/ProductPagination.jsx";
 
 function Products(props) {
     const {setOverlay,isOpenFilterBox, setIsOpenFilterBox , isOpenSortBox, setIsOpenSortBox} = useContext(AppContext);
@@ -31,7 +32,9 @@ function Products(props) {
     const [isFiltered, setIsFiltered] = useState(false);
     const [filteredProducts, setFilteredProducts] = useState([])
     const [mode, setMode] = useState("")
-    const [totalPages, setTotalPages] = useState(0)
+    const [visibilityProducts, setVisibilityProducts] = useState([])
+    const [currentPage, setCurrentPage] = useState(1);
+    const [showProducts, setShowProducts] = useState([])
     const itemsPerPage = 5
 
 
@@ -112,6 +115,7 @@ function Products(props) {
         fetch("https://karin-shop-db.onrender.com/products").then(res => res.json()).then(data => {
             setProducts(data)
             setFilteredProducts(data)
+            setShowProducts(data.slice(0,itemsPerPage))
         }).catch((err) => console.log(err));
     }, [])
     useEffect(() => {
@@ -127,6 +131,7 @@ function Products(props) {
                 return true
             })
             setFilteredProducts(resultFiltered);
+            setCurrentPage(1)
         }
 
     }, [filters, products])
@@ -149,12 +154,12 @@ function Products(props) {
                     }
                 })
                 setFilteredProducts(resultSort);
+                setCurrentPage(1)
             }
         }
-    }, [sort,products])
-    useEffect(() => {
-        setTotalPages(Math.ceil(products.length / itemsPerPage))
-    },[products])
+    }, [sort,products]);
+
+
     return (
         <section className="container">
             <WebTitle title="کارین شاپ | محصولات"/>
@@ -352,16 +357,14 @@ function Products(props) {
                     {/* ! ================== ! Product Wrapper ! ================== ! */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         {
-                            filteredProducts.map(product => (
+                            showProducts.map(product => (
                                 <SecondProductBox key={product.id} {...product} />
                             ))
                         }
                     </div>
+                    {/* ! ================== ! Pagination Product ! ================== ! */}
+                    <ProductPagination pagination={{items: filteredProducts , setItem: setShowProducts , itemsPerPage:itemsPerPage , currentPage:currentPage , setCurrentPage:setCurrentPage}} />
                 </div>
-            </div>
-            {/* ! ================== ! Pagination Button Wrapper  ! ================== ! */}
-            <div className="">
-
             </div>
         </section>
     );
