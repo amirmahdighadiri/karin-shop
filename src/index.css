@@ -111,13 +111,16 @@
         width: 60px;
         margin: 0 auto;
         aspect-ratio: 2;
-        --_g: no-repeat radial-gradient(circle closest-side,#e5e7eb 90%,#0000);
+        --_g: no-repeat radial-gradient(circle closest-side,#9ca3af 90%,#0000);
         background:
                 var(--_g) 0%   50%,
                 var(--_g) 50%  50%,
                 var(--_g) 100% 50%;
         background-size: calc(100%/3) 45%;
         animation: l3 1s infinite linear;
+    }
+    .dark .loader{
+        --_g: no-repeat radial-gradient(circle closest-side,#e5e7eb 90%,#0000);
     }
 
     @keyframes l3 {

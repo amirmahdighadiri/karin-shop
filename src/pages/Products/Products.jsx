@@ -10,6 +10,7 @@ import time from '../../assets/images/filter-image/time.png'
 import shop from '../../assets/images/filter-image/shop.png'
 import WebTitle from "../../util/WebTitle.jsx";
 import ProductPagination from "../../components/ProductPagination/ProductPagination.jsx";
+import ProductSkeleton from "../../components/Skeleton/ProductSkeleton.jsx";
 
 function Products(props) {
     const {setOverlay,isOpenFilterBox, setIsOpenFilterBox , isOpenSortBox, setIsOpenSortBox} = useContext(AppContext);
@@ -35,6 +36,7 @@ function Products(props) {
     const [visibilityProducts, setVisibilityProducts] = useState([])
     const [currentPage, setCurrentPage] = useState(1);
     const [showProducts, setShowProducts] = useState([])
+    const [isLoading, setIsLoading] = useState(true);
     const itemsPerPage = 5
 
 
@@ -116,6 +118,7 @@ function Products(props) {
             setProducts(data)
             setFilteredProducts(data)
             setShowProducts(data.slice(0,itemsPerPage))
+            setIsLoading(false)
         }).catch((err) => console.log(err));
     }, [])
     useEffect(() => {
@@ -357,7 +360,9 @@ function Products(props) {
                     {/* ! ================== ! Product Wrapper ! ================== ! */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         {
-                            showProducts.map(product => (
+                            isLoading ? Array.from({length:5}).map(index=>(
+                                <ProductSkeleton key={index}/>
+                            )) :  showProducts.map(product => (
                                 <SecondProductBox key={product.id} {...product} />
                             ))
                         }

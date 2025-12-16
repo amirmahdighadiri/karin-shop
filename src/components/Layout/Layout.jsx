@@ -6,6 +6,7 @@ import Footer from "../Footer/Footer.jsx";
 import RootContext from "../../context/RootContext.jsx";
 import Loader from "../Loader/Loader.jsx";
 import AcceptModal from "../Modals/AcceptModal/AcceptModal.jsx";
+import ProductSkeleton from "../Skeleton/ProductSkeleton.jsx";
 
 function Layout() {
     const location = useLocation();

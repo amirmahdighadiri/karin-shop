@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import SecondProductBox from "../../ProductBox/SecondProductBox.jsx";
+import ProductSkeleton from "../../Skeleton/ProductSkeleton.jsx";
 
 function FavoriteProducts() {
     const [products, setProducts] = useState([]);
