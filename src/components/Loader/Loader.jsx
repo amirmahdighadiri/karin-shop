@@ -13,7 +13,7 @@ function Loader() {
     }, []);
 
     return ReactDOM.createPortal (
-        <div className="fixed inset-0 z-20 flex-center min-h-screen bg-white dark:bg-gray-900">
+        <div className="fixed inset-0 z-30 flex-center min-h-screen bg-white dark:bg-gray-900">
             {/* ! ================== ! Background Effect ! ================== ! */}
             <svg className="absolute -z-10 left-0 top-0 h-full w-full mask-radial stroke-black/10 stroke-[2] [mask-image:radial-gradient(circle_at_center,rgba(255,255,255,1)_20%,rgba(255,255,255,0)_95%)] dark:stroke-white/10">
                 <rect width="100%" height="100%" fill="url(#grid-pattern)"></rect>

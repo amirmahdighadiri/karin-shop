@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import ShoppingCartBox from "../../components/ShoppingCartBox/ShoppingCartBox.jsx";
 import {AuthContext} from "../../context/AuthContext.jsx";
 import WebTitle from "../../util/WebTitle.jsx";
+import Loader from "../../components/Loader/Loader.jsx";
 
 function ShoppingCart(props) {
     const [userShoppingProducts,setUserShoppingProducts] = useState([]);
@@ -11,15 +12,20 @@ function ShoppingCart(props) {
     const [totalPrice , setTotalPrice] = useState(0);
     const [userId, setUserId] = useState(()=> localStorage.getItem('userID'))
     const {setUserShoppingCartCount} = useContext(AuthContext);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`https://karin-shop-db.onrender.com/cart?userId=${userId}&_expand=product`).then(res=>res.json()).then((data)=>setUserShoppingProducts(data)).catch((err)=>console.log(err));
+        fetch(`https://karin-shop-db.onrender.com/cart?userId=${userId}&_expand=product`).then(res=>res.json()).then((data)=>{
+            setUserShoppingProducts(data)
+            setIsLoading(false);
+        }).catch((err)=>console.log(err));
     },[])
 
     useEffect(() => {
         setTotalQuantity(userShoppingProducts.reduce((acc , item)=> acc + item.quantity , 0))
         setTotalPrice(userShoppingProducts.reduce((acc , item)=> acc + item.quantity * item.product.price , 0))
     },[userShoppingProducts])
+
     useEffect(() => {
         setUserShoppingCartCount(totalQuantity);
     },[totalQuantity])
@@ -195,6 +201,7 @@ function ShoppingCart(props) {
                         </div>
                     </div>
             }
+            {isLoading && <Loader />}
         </section>
     );
 }

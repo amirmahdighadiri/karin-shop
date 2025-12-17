@@ -42,7 +42,7 @@ function TopBar(props) {
                 </svg>
             </button>
             {/* ! ================== ! Search Box ! ================== ! */}
-            <div className="relative z-20 hidden lg:block w-full lg:w-84 border border-gray-300 dark:border-transparent bg-gray-50 dark:bg-gray-700 py-1 pl-2 pr-1 rounded-full" onClick={searchResultHandler}>
+            <div className="relative z-30 hidden lg:block w-full lg:w-84 border border-gray-300 dark:border-transparent bg-gray-50 dark:bg-gray-700 py-1 pl-2 pr-1 rounded-full" onClick={searchResultHandler}>
                 {/* ! ================== ! Search Box Wrapper ! ================== ! */}
                 <div className="flex items-center gap-x-2">
                     {/* ! ================== ! Search Icon ! ================== ! */}
