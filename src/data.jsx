@@ -222,4 +222,12 @@ const userFields = [
     {id:5 , inputId : "birthday" , lable:"تاریخ تولد" , inputType : "text" , inputIcon : "pencilSquare"}
 ]
 
-export {category, prodcuts, brands, articles, users, filterCategory, productLiveTexts ,services , userFields}
+const skeletonIds = [
+    {id:1 , title: "skeleton-1"},
+    {id:2 , title: "skeleton-2"},
+    {id:3 , title: "skeleton-3"},
+    {id:4 , title: "skeleton-4"},
+    {id:5 , title: "skeleton-5"},
+]
+
+export {category, prodcuts, brands, articles, users, filterCategory, productLiveTexts ,services , userFields ,skeletonIds}

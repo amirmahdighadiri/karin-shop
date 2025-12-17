@@ -5,6 +5,7 @@ import CustomCheckBox from "../../components/CustomCheckBox/CustomCheckBox.jsx";
 import SecondProductBox from "../../components/ProductBox/SecondProductBox.jsx";
 import {AppContext} from "../../context/AppContext.jsx";
 import {filterCategory} from "../../data.jsx";
+import {skeletonIds} from "../../data.jsx"
 // Images
 import time from '../../assets/images/filter-image/time.png'
 import shop from '../../assets/images/filter-image/shop.png'
@@ -37,6 +38,7 @@ function Products(props) {
     const [currentPage, setCurrentPage] = useState(1);
     const [showProducts, setShowProducts] = useState([])
     const [isLoading, setIsLoading] = useState(true);
+    const [skeletonItems, setSkeletonItems] = useState(skeletonIds);
     const itemsPerPage = 5
 
 
@@ -360,8 +362,8 @@ function Products(props) {
                     {/* ! ================== ! Product Wrapper ! ================== ! */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         {
-                            isLoading ? Array.from({length:5}).map(index=>(
-                                <ProductSkeleton key={index}/>
+                            isLoading ? skeletonItems.map(item=>(
+                                <ProductSkeleton key={item.id}/>
                             )) :  showProducts.map(product => (
                                 <SecondProductBox key={product.id} {...product} />
                             ))
