@@ -31,7 +31,7 @@ function ContactUs(props) {
                 </span>
             </div>
             {/* ! ================== ! Contact US From ! ================== ! */}
-            <ContactForm  setIsOpenModal={setIsOpenModal} setMessageStatus={setMessageStatus} />
+            <ContactForm setIsOpenModal={setIsOpenNotification} setMessageStatus={setMessageStatus} />
             {/* ! ================== ! Modals ! ================== ! */}
             {isOpenNotification && messageStatus && (<Notification title="موفق" message="پبام شما با موفقیت ارسال شد" isOpenNotification={isOpenNotification} setIsOpenNotificatio={setIsOpenNotification}  IconComponent={() => <DynamicIcon name="tickCircle" />} />)}
             {isOpenNotification && !messageStatus && (<Notification title="خطا" message="لطفا دوباره تلاش کنید" isOpenNotification={isOpenNotification} setIsOpenNotificatio={setIsOpenNotification}  IconComponent={() => <DynamicIcon name="closeCircle" />} />)}

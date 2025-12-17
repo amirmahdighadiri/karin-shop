@@ -7,7 +7,7 @@ import Password from "./components/Forms/Password.jsx";
 import Products from "./pages/Products/Products.jsx";
 import Error from "./pages/Error/Error.jsx";
 import ShoppingCart from "./pages/ShoppingCart/ShoppingCart.jsx";
-import ProductInfo from "./pages/ProductInfo/ProductInfo.jsx";
+import ProductPage from "./pages/ProductInfo/ProductPage.jsx";
 import Dashboard from "./pages/Dashboard/Dashboard.jsx";
 import AboutUS from "./pages/AboutUs/AboutUS.jsx";
 import FAQ from "./pages/FAQ/FAQ.jsx";
@@ -18,6 +18,7 @@ import FavoriteProducts from "./components/DashboardPages/FavoriteProducts/Favor
 import UserMessage from "./components/DashboardPages/UserMessage/UserMessage.jsx";
 import UserInformation from "./components/DashboardPages/UserInformation/UserInformation.jsx";
 import Maintenance from "./pages/Maintenance/Maintenance.jsx";
+import ArticlePage from "./pages/Article/ArticlePage.jsx";
 
 const routes = [
     {
@@ -31,7 +32,7 @@ const routes = [
                 ]
             },
             {path: "products", element: <Products/>},
-            {path: "products/:id", element: <ProductInfo/>},
+            {path: "products/:id", element: <ProductPage/>},
             {path: "shopping-cart", element: <ShoppingCart/>},
             {path: "dashboard", element: <Dashboard/>, children: [
                     {path: "order" , element: <OrderTable/>},
@@ -44,6 +45,7 @@ const routes = [
             {path: "faq", element: <FAQ/>},
             {path: "contact-us", element: <ContactUs/>},
             {path: "maintenance" , element: <Maintenance/>},
+            {path: "article" , element: <ArticlePage />},
             {path: "*", element: <Error/>}
         ]
     },

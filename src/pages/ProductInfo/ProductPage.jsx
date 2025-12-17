@@ -24,7 +24,7 @@ import {AuthContext} from "../../context/AuthContext.jsx";
 import WebTitle from "../../util/WebTitle.jsx";
 
 
-function ProductInfo(props) {
+function ProductPage(props) {
     const [liveText, setLiveText] = useState(productLiveTexts);
     const [productCount, setProductCount] = useState(1);
     const [servicesItems, setServicesItems] = useState(services);
@@ -530,4 +530,4 @@ function ProductInfo(props) {
     );
 }
 
-export default ProductInfo;
+export default ProductPage;

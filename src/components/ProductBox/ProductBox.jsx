@@ -24,7 +24,7 @@ function ProductBox({id,title, price, dicountPercent, score, todaySend, src}) {
             </div>
             {/* ! ================== ! Product Image ! ================== ! */}
             <Link to={`/products/${id}`} className="flex-center">
-                <img src={`${import.meta.env.BASE_URL}${src}`} alt="" className="w-44 h-32 object-cover" loading={"lazy"}/>
+                <img src={`${import.meta.env.BASE_URL}${src}`} alt={title} className="w-44 h-32 object-cover" loading={"lazy"}/>
             </Link>
             {/* ! ================== ! Product Title ! ================== ! */}
             <Link to={`/products/${id}`} className="text-gray-700 dark:text-gray-300 text-sm line-clamp-2 mt-1">
