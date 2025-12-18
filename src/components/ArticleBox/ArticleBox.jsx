@@ -6,7 +6,7 @@ function ArticleBox({title , src, viweCount, createAT}) {
         <div className="p-2 bg-white dark:bg-gray-800 rounded-lg shadow-sm group">
             {/* ! ================== ! Article Image & Effect ! ================== ! */}
             <div className="relative rounded-lg rounded-tr-3xl rounded-bl-3xl overflow-hidden">
-                <img src={`${import.meta.env.BASE_URL}${src}`} alt="article" className="" loading={"lazy"}/>
+                <img src={`${import.meta.env.BASE_URL}${src}`} alt="article" className="w-full" loading={"lazy"}/>
                 <div className="absolute inset-0 flex-center bg-black/60 opacity-0 group-hover:opacity-100 transition-all cursor-pointer">
                     <Link to="/" className="flex items-center font-Dana-Medium rounded-lg border-2 border-white text-white px-2 py-1">
                         <span className="">ادامه مطالب</span>
@@ -19,7 +19,7 @@ function ArticleBox({title , src, viweCount, createAT}) {
             {/* ! ================== ! Article Title & Details ! ================== ! */}
             <div className="">
                 {/* ! ================== ! Title ! ================== ! */}
-                <h3 className="font-Dana-DemiBold text-zinc-900 dark:text-gray-100 py-5 line-clamp-1">{title}</h3>
+                <h3 className="font-Dana-DemiBold text-zinc-900 dark:text-gray-100 py-5 text-nowrap line-clamp-1">{title}</h3>
                 {/* ! ================== ! Details ! ================== ! */}
                 <div className="flex items-center justify-between border-t border-gray-100 dark:border-white/10 pt-1">
                     {/* ! ================== ! Create TIme ! ================== ! */}

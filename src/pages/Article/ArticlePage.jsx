@@ -114,7 +114,7 @@ function ArticlePage() {
                     </div>
                 </div>
                 {/* ! ================== ! Article Page Sidebar ! ================== ! */}
-                <div className="col-span-12 xl:col-span-3 self-start mt-5">
+                <div className="col-span-12 xl:col-span-3 self-start mt-5 xl:mt-0">
                     {/* ! ================== ! New Article List Wrapper ! ================== ! */}
                     <div className="w-full p-4 rounded-lg bg-white dark:bg-gray-800 shadow">
                         {/* ! ================== ! New Article List Title ! ================== ! */}
@@ -128,7 +128,7 @@ function ArticlePage() {
                                 ))}
                         </ul>
                         {/* ! ================== ! Show More Button ! ================== ! */}
-                        <Link to="/articles" className="w-full flex-center gap-x-2 py-2 bg-blue-500 text-zinc-100 rounded-lg mt-4">
+                        <Link to="/article" className="w-full flex-center gap-x-2 py-2 bg-blue-500 text-zinc-100 rounded-lg mt-4">
                             مشاهده بیشتر
                             <svg xmlns="http://www.w3.org/2000/svg" id="chevron" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-4 rotate-90 transition-all duration-400 delay-150" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path>

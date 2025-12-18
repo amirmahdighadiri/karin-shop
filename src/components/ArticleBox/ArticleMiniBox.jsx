@@ -4,11 +4,11 @@ import {Link} from "react-router-dom";
 function ArticleMiniBox({title,src,createAT}) {
     return (
         <div className="flex items-center gap-x-3">
-            <Link to="/articles">
+            <Link to="/article">
                 <img src={`${import.meta.env.BASE_URL}${src}`} alt="" className="w-35 h-20 object-cover rounded-lg"/>
             </Link>
             <div className="">
-                <Link to="/articles">
+                <Link to="/article">
                     <h5 className="text-zinc-900 dark:text-zinc-100 mb-3 line-clamp-1">{title}</h5>
                 </Link>
                 <p className="flex items-center gap-x-1 text-gray-400">

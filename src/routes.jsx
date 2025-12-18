@@ -19,6 +19,7 @@ import UserMessage from "./components/DashboardPages/UserMessage/UserMessage.jsx
 import UserInformation from "./components/DashboardPages/UserInformation/UserInformation.jsx";
 import Maintenance from "./pages/Maintenance/Maintenance.jsx";
 import ArticlePage from "./pages/Article/ArticlePage.jsx";
+import Blog from "./pages/Blog/Blog.jsx";
 
 const routes = [
     {
@@ -45,7 +46,8 @@ const routes = [
             {path: "faq", element: <FAQ/>},
             {path: "contact-us", element: <ContactUs/>},
             {path: "maintenance" , element: <Maintenance/>},
-            {path: "articles" , element: <ArticlePage />},
+            {path: "article" , element: <ArticlePage />},
+            {path: "blog", element: <Blog/>},
             {path: "*", element: <Error/>}
         ]
     },
