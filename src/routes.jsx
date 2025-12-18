@@ -45,7 +45,7 @@ const routes = [
             {path: "faq", element: <FAQ/>},
             {path: "contact-us", element: <ContactUs/>},
             {path: "maintenance" , element: <Maintenance/>},
-            {path: "article" , element: <ArticlePage />},
+            {path: "articles" , element: <ArticlePage />},
             {path: "*", element: <Error/>}
         ]
     },
