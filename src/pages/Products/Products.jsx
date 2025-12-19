@@ -93,13 +93,6 @@ function Products(props) {
         setMaxValue(value);
     }
 
-    const changeSortHandler = (event) => {
-        if (event.target.tagName === 'BUTTON') {
-            setMode("sort");
-            setSort(event.target.dataset.sortId);
-        }
-    }
-
     const openFilterBoxInMobile = ()=>{
        setIsOpenFilterBox(true)
        setOverlay(true)
@@ -113,6 +106,14 @@ function Products(props) {
     const closeSortBoxHandler = ()=>{
         setIsOpenSortBox(false)
         setOverlay(false)
+    }
+
+    const changeSortHandler = (event) => {
+        if (event.target.tagName === 'BUTTON') {
+            setMode("sort");
+            setSort(event.target.dataset.sortId);
+        }
+        closeSortBoxHandler()
     }
 
     useEffect(() => {
@@ -138,7 +139,6 @@ function Products(props) {
             setFilteredProducts(resultFiltered);
             setCurrentPage(1)
         }
-
     }, [filters, products])
     useEffect(() => {
         if (mode === "sort") {

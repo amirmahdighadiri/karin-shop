@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import WebTitle from "../../util/WebTitle.jsx";
 import {Link} from "react-router-dom";
 import CustomCheckBox from "../../components/CustomCheckBox/CustomCheckBox.jsx";
@@ -9,14 +9,14 @@ import ProductPagination from "../../components/ProductPagination/ProductPaginat
 import ArticleSkeleton from "../../components/Skeleton/ArticleSkeleton.jsx";
 import {skeletonIds} from "../../data.jsx";
 import ArticleBox from "../../components/ArticleBox/ArticleBox.jsx";
+import {AppContext} from "../../context/AppContext.jsx";
 
 function Blog(props) {
+    const {setOverlay,isOpenFilterBox, setIsOpenFilterBox , isOpenSortBox, setIsOpenSortBox} = useContext(AppContext);
     const [filters, setFilters] = useState({
         lastest: false,
         news: false,
     });
-    const [isOpenFilterBox, setIsOpenFilterBox] = useState(true);
-    const [isOpenSortBox, setIsOpenSortBox] = useState(false);
     const [sort, setSort] = useState('')
     const [articles, setArticles] = useState([]);
     const [filteredArticles, setFilteredArticles] = useState([])
@@ -24,6 +24,7 @@ function Blog(props) {
     const [showArticles, setShowArticles] = useState([]);
     const [skeletonItems, setSkeletonItems] = useState(skeletonIds);
     const [mode, setMode] = useState("");
+    const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5
 
     useEffect(() => {
@@ -37,18 +38,45 @@ function Blog(props) {
 
     useEffect(() => {
         if (mode === "filter") {
-            console.log('filter');
+            setSort("")
+            let resultFilteredArticles = [...articles]
+            if (filters.lastest) {
+                resultFilteredArticles.sort((a, b) => {
+                    return b.createdAt - a.createdAt
+                })
+            }if (filters.news) {
+                resultFilteredArticles = resultFilteredArticles.filter(article => article.category === 'news')
+            }
+            setFilteredArticles(resultFilteredArticles)
+            setCurrentPage(1)
         }
     },[filters])
 
     useEffect(() => {
         if (mode === "sort") {
-            console.log('sort')
+            removeAllFilters()
+            let resultSort = [...articles]
+            if (sort === "popular"){
+                resultSort.sort((a, b) => {
+                    return b.viewCount - a.viewCount
+                })
+            }
+            setFilteredArticles(resultSort)
+            setCurrentPage(1)
         }
     },[sort])
 
-    const removeFiltersAndSortHandler = ()=>{
+    const removeAllFilters = ()=>{
+        setFilters({
+            lastest: false,
+            news: false,
+        });
+    }
 
+    const removeFiltersAndSortHandler = ()=>{
+        removeAllFilters()
+        setSort("")
+        setMode("")
     }
 
     const filterCahngeHandler = name => {
@@ -56,23 +84,26 @@ function Blog(props) {
         setMode("filter")
     }
 
-    const changeSortHandler = (event) => {
-        setSort(event.target.dataset.sortId);
-    }
-
     const openFilterBoxInMobile = ()=>{
-        // setIsOpenFilterBox(true)
-        // setOverlay(true)
+        console.log(1)
+        setIsOpenFilterBox(true)
+        setOverlay(true)
     }
 
     const openSortBoxInMobile = ()=>{
-        // setIsOpenSortBox(true)
-        // setOverlay(true)
+        setIsOpenSortBox(true)
+        setOverlay(true)
     }
 
     const closeSortBoxHandler = ()=>{
-        // setIsOpenSortBox(false)
-        // setOverlay(false)
+        setIsOpenSortBox(false)
+        setOverlay(false)
+    }
+
+    const changeSortHandler = (event) => {
+        setSort(event.target.dataset.sortId);
+        setMode("sort")
+        closeSortBoxHandler()
     }
 
     return (
@@ -100,7 +131,7 @@ function Blog(props) {
             {/* ! ================== ! Page Content  ! ================== ! */}
             <div className="grid grid-cols-12 gap-x-4 mt-5">
                 {/* ! ================== ! Filter Wrapper ! ================== ! */}
-                <div className={`fixed z-20 right-0 left-0 bottom-0 lg:sticky lg:top-1 ${isOpenFilterBox ? 'lg:translate-y-0' : 'translate-y-full lg:translate-y-0'} col-span-12 lg:col-span-3 dark:bg-gray-800 bg-white rounded-lg shadow p-4 self-start transition-all`}>
+                <div className={`fixed z-30 right-0 left-0 bottom-0 lg:sticky lg:top-1 ${isOpenFilterBox ? 'lg:translate-y-0' : 'translate-y-full lg:translate-y-0'} col-span-12 lg:col-span-3 dark:bg-gray-800 bg-white rounded-lg shadow p-4 self-start transition-all`}>
                     {/* ! ================== ! Filter Title  ! ================== ! */}
                     <div className="flex items-center justify-between">
                         <span className="text-gray-700 dark:text-gray-200 text-lg">فیلترها</span>
@@ -123,7 +154,7 @@ function Blog(props) {
                 {/* ! ================== ! Articles Wrapper ! ================== ! */}
                 <div className="col-span-12 lg:col-span-9">
                     {/* ! ================== ! Sort Wrapper ! ================== ! */}
-                    <div className={`fixed z-20 lg:static right-0 left-0 bottom-0 ${isOpenSortBox ? 'lg:translate-y-0' : 'translate-y-full lg:translate-y-0'} flex flex-col-reverse lg:flex-row lg:items-center justify-between lg:mb-6 p-4 lg:p-0 bg-white dark:bg-gray-800 lg:dark:bg-transparent transition-all rounded-lg lg:rounded-none`}>
+                    <div className={`fixed z-30 lg:static right-0 left-0 bottom-0 ${isOpenSortBox ? 'lg:translate-y-0' : 'translate-y-full lg:translate-y-0'} flex flex-col-reverse lg:flex-row lg:items-center justify-between lg:mb-6 p-4 lg:p-0 bg-white dark:bg-gray-800 lg:dark:bg-transparent transition-all rounded-lg lg:rounded-none`}>
                         {/* ! ================== ! Sort Menu  ! ================== ! */}
                         <div className="flex items-center justify-center gap-x-5">
                             {/* ! ================== ! Sort Menu Logo ! ================== ! */}
@@ -197,8 +228,8 @@ function Blog(props) {
                         }
 
                     </div>
-                    {/* ! ================== ! Pagination Product ! ================== ! */}
-                    {/*<ProductPagination pagination={{items: filteredArticles , setItem: setShowProducts , itemsPerPage:itemsPerPage , currentPage:currentPage , setCurrentPage:setCurrentPage}} />*/}
+                     {/*! ================== ! Pagination Product ! ================== !*/}
+                    <ProductPagination pagination={{items: filteredArticles , setItem: setShowArticles , itemsPerPage:itemsPerPage , currentPage:currentPage , setCurrentPage:setCurrentPage}} />
                 </div>
             </div>
         </section>

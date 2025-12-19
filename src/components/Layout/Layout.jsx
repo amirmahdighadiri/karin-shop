@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {use, useEffect} from 'react';
 import {Outlet, useLocation, useMatches} from "react-router-dom";
 import Header from "../Header/Header.jsx";
 import Overlay from "../Overlay/Overlay.jsx";
@@ -12,6 +12,10 @@ function Layout() {
     const location = useLocation();
     const noHeaderPaths = ["/auth-layout", "/maintenance"];
     const noFooterPaths = ["/auth-layout", "/dashboard", "/maintenance"];
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    },[location.pathname])
 
     return (
         <RootContext>

@@ -16,7 +16,7 @@ function Menu(props) {
     }
     return (
         <section className="lg:container">
-            <div className={`fixed z-20 lg:static top-0 bottom-0 ${openMenu ? 'right-0' : '-right-72'} w-72 max-lg:min-h-screen h-16 lg:w-full flex flex-col lg:flex-row lg:items-center lg:justify-between bg-white lg:bg-gray-900 dark:bg-gray-800 text-gray-800 lg:text-gray-200 p-4 lg:px-10 lg:rounded-full lg:mt-6 transition-all duration-300`}>
+            <div className={`fixed z-30 lg:static top-0 bottom-0 ${openMenu ? 'right-0' : '-right-72'} w-72 max-lg:min-h-screen h-16 lg:w-full flex flex-col lg:flex-row lg:items-center lg:justify-between bg-white lg:bg-gray-900 dark:bg-gray-800 text-gray-800 lg:text-gray-200 p-4 lg:px-10 lg:rounded-full lg:mt-6 transition-all duration-300`}>
                 {/* ! ================== ! Moble Menu Header ! ================== ! */}
                 <div className="flex lg:hidden items-center justify-between pb-4 border-b-2 border-gray-200 dark:border-gray-600">
                     <Link to="/" className="font-Morabba text-xl">
@@ -99,7 +99,7 @@ function Menu(props) {
                             </Link>
                         </li>
                         <li className="hidden lg:block">
-                            <Link to="/" className={`relative before:content-[''] before:absolute before:-bottom-1 before:left-1/2 before:-translate-x-1/2 before:w-0 before:h-0.5 before:bg-blue-500 hover:before:w-full before:transition-all before:duration-400 before:delay-75`}>
+                            <Link to="/blog" className={`relative before:content-[''] before:absolute before:-bottom-1 before:left-1/2 before:-translate-x-1/2 before:w-0 before:h-0.5 before:bg-blue-500 hover:before:w-full before:transition-all before:duration-400 before:delay-75`}>
                                 وبلاگ
                             </Link>
                         </li>

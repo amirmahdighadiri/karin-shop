@@ -34,13 +34,16 @@ function Home() {
     const [popularCategory, setPopularCategory] = useState(category);
     const [popularProducts, setPopularProducts] = useState([]);
     const [brandsItem, setBrandsItem] = useState(brands);
-    const [articlesItem, setArticlesItem] = useState(articles);
+    const [articlesItem, setArticlesItem] = useState([]);
     const {isShowLoader, setIsShowLoader}=useContext(AppContext);
 
     useEffect(()=>{
         fetch("https://karin-shop-db.onrender.com/products").then((res)=> res.json()).then(data =>{
             setPopularProducts(data)
             setIsShowLoader(false)
+        })
+        fetch("https://karin-shop-db.onrender.com/articles").then((res)=> res.json()).then(data =>{
+            setArticlesItem(data)
         })
     },[])
 
@@ -415,6 +418,7 @@ function Home() {
                     </div>
                 </div>
             </section>
+            {/* ! ================== ! Loader ! ================== ! */}
             {
                 isShowLoader && <Loader />
             }
