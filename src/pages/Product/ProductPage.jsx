@@ -22,6 +22,7 @@ import 'swiper/css/navigation';
 import ProductGallery from "../../components/ProductGallery/ProductGallery.jsx";
 import {AuthContext} from "../../context/AuthContext.jsx";
 import WebTitle from "../../util/WebTitle.jsx";
+import Notification from "../../components/Notification/Notification.jsx";
 
 
 function ProductPage(props) {
@@ -46,6 +47,8 @@ function ProductPage(props) {
     const location = useLocation();
     const [spinnerAddToCart ,setSpinnerAddToCart ] = useState(false);
     const {setUserShoppingCartCount} = useContext(AuthContext);
+    const [notificatioStatus,setNotificatioStatus] = useState(false);
+    const [isOpenNotification , setIsOpenNotification ] = useState(false);
 
 
     useEffect(() => {
@@ -499,22 +502,21 @@ function ProductPage(props) {
                         </div>
                         {/* ! ================== ! Product Comments Wrapper ! ================== ! */}
                         <div className="w-full flex flex-col lg:flex-row items-start gap-10">
-                            <CommentForm />
+                            <CommentForm userId={userId} productId={id} setNotificatioStatus={setNotificatioStatus} setIsOpenNotification={setIsOpenNotification} setComments={setComments}/>
                             {/* ! ================== ! Comments Wrapper ! ================== ! */}
                             <div className="w-full lg:w-3/4 divide-y divide-gray-200 dark:divide-gray-200/20">
-                                {
-                                    comments.slice(0,visibleCount).map(comment =>(
+                                {comments.length > 0 ?  comments.slice(0,visibleCount).map(comment =>(
                                         <CommentBox key={comment.id} {...comment} />
-                                    ))
+                                    )) : <p className="text-center text-zinc-900 dark:text-zinc-100">هیچ دیدگاهی برای این محصول وجود ندارد!</p>
+
                                 }
-                                {
-                                    comments.length > 5 && <button onClick={showCommentsHandler} className="mx-auto flex items-center justify-center gap-x-1 my-4 py-2 text-blue-600 dark:text-blue-400 cursor-pointer">
+                                {/* ! ================== ! Show More Comment Button ! ================== ! */}
+                                {comments.length > 5 && <button onClick={showCommentsHandler} className="mx-auto flex items-center justify-center gap-x-1 my-4 py-2 text-blue-600 dark:text-blue-400 cursor-pointer">
                                         <p className="">{isExpanded ? 'مشاهده کمتر' : 'مشاهده بیشتر'}</p>
                                         <svg xmlns="http://www.w3.org/2000/svg" id="chevron-left" fill="none" stroke="currentColor" strokeWidth="1.5" className={`size-4 ${isExpanded ? 'rotate-90' : '-rotate-90'} transition-all`} viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"></path>
                                         </svg>
-                                    </button>
-                                }
+                                    </button>}
                             </div>
                         </div>
                     </div>}
@@ -526,6 +528,9 @@ function ProductPage(props) {
                         <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z" clipRule="evenodd" />
                     </svg>
                 </LoginPopup>}
+            {/* ! ================== ! Notification ! ================== ! */}
+            {isOpenNotification && notificatioStatus && (<Notification title="موفق" message="پبام شما با موفقیت ارسال شد" isOpenNotification={isOpenNotification} setIsOpenNotification={setIsOpenNotification}  IconComponent={() => <DynamicIcon name="tickCircle" />} />)}
+            {isOpenNotification && !notificatioStatus && (<Notification title="خطا" message="لطفا دوباره تلاش کنید" isOpenNotification={isOpenNotification} setIsOpenNotification={setIsOpenNotification}  IconComponent={() => <DynamicIcon name="closeCircle" />} />)}
         </section>
     );
 }

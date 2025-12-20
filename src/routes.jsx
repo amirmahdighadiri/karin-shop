@@ -7,7 +7,7 @@ import Password from "./components/Forms/Password.jsx";
 import Products from "./pages/Products/Products.jsx";
 import Error from "./pages/Error/Error.jsx";
 import ShoppingCart from "./pages/ShoppingCart/ShoppingCart.jsx";
-import ProductPage from "./pages/ProductInfo/ProductPage.jsx";
+import ProductPage from "./pages/Product/ProductPage.jsx";
 import Dashboard from "./pages/Dashboard/Dashboard.jsx";
 import AboutUS from "./pages/AboutUs/AboutUS.jsx";
 import FAQ from "./pages/FAQ/FAQ.jsx";
