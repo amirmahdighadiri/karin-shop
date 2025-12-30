@@ -54,4 +54,20 @@ npm run dev
 
 <h2>Demo Images :</h2>
 
-<img src="/karin-shop/public/demo/1.png" />
+![Demo 1](./public/demo/1.png)
+<br/>
+![Demo 2](./public/demo/2.png)
+<br/>
+![Demo 3](./public/demo/3.png)
+<br/>
+![Demo 4](./public/demo/4.png)
+<br/>
+![Demo 5](./public/demo/5.png)
+<br/>
+![Demo 6](./public/demo/6.png)
+<br/>
+![Demo 7](./public/demo/7.png)
+<br/>
+![Demo 8](./public/demo/8.png)
+<br/>
+![Demo 9](./public/demo/9.png)
