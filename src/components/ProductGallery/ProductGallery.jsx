@@ -24,16 +24,16 @@ function ProductGallery({isOpenGallery}) {
                 slidesPerView={1}
             >
                 <SwiperSlide>
-                    <img src="/images/products/phone-image/11.png" alt="iphone 16" className="size-100 rounded-lg mx-auto"/>
+                    <img src={`${import.meta.env.BASE_URL}/images/products/phone-image/11.png`} alt="iphone 16" className="size-100 rounded-lg mx-auto"/>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src="/images/products/phone-image/13.webp" alt="iphone 16" className="size-100 rounded-lg mx-auto"/>
+                    <img src={`${import.meta.env.BASE_URL}/images/products/phone-image/13.webp`} alt="iphone 16" className="size-100 rounded-lg mx-auto"/>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src="/images/products/phone-image/12.webp" alt="iphone 16" className="size-100 rounded-lg mx-auto"/>
+                    <img src={`${import.meta.env.BASE_URL}/images/products/phone-image/12.webp`} alt="iphone 16" className="size-100 rounded-lg mx-auto"/>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src="/images/products/phone-image/14.webp" alt="iphone 16" className="size-100 rounded-lg mx-auto"/>
+                    <img src={`${import.meta.env.BASE_URL}/images/products/phone-image/14.webp`} alt="iphone 16" className="size-100 rounded-lg mx-auto"/>
                 </SwiperSlide>
             </Swiper>
 

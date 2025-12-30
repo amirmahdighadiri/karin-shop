@@ -210,18 +210,18 @@ function ProductPage(props) {
                         <div className="w-1/2">
                             {/* ! ================== ! Main Image & More Image Box ! ================== ! */}
                             <div onClick={openProductGallerHandler}>
-                                <img src="/images/products/phone-image/11.png" alt="iphone 16" className="cursor-pointer"/>
+                                <img src={`${import.meta.env.BASE_URL}/images/products/phone-image/11.png`} alt="iphone 16" className="cursor-pointer"/>
                                 <div className="flex items-center justify-center gap-x-4.5 mt-4">
                                     <div className="size-16 p-1 border dark:border-gray-700 rounded-lg cursor-pointer">
-                                        <img src="/images/products/phone-image/11.png" alt="iphone 16"
+                                        <img src={`${import.meta.env.BASE_URL}/images/products/phone-image/11.png`} alt="iphone 16"
                                              className="object-cover rounded-lg"/>
                                     </div>
                                     <div className="size-16 p-1 border dark:border-gray-700 rounded-lg cursor-pointer">
-                                        <img src="/images/products/phone-image/13.webp" alt="iphone 16"
+                                        <img src={`${import.meta.env.BASE_URL}/images/products/phone-image/13.webp`} alt="iphone 16"
                                              className="object-cover rounded-lg"/>
                                     </div>
                                     <div className="size-16 p-1 border dark:border-gray-700 rounded-lg cursor-pointer">
-                                        <img src="/images/products/phone-image/12.webp" alt="iphone 16"
+                                        <img src={`${import.meta.env.BASE_URL}/images/products/phone-image/12.webp`} alt="iphone 16"
                                              className="object-cover rounded-lg"/>
                                     </div>
                                     <div className="relative size-16 flex-center p-1 border dark:border-gray-700 rounded-lg cursor-pointer overflow-hidden">
@@ -231,7 +231,7 @@ function ProductPage(props) {
                                             <path strokeLinecap="round" strokeLinejoin="round"
                                                   d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m6 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m6 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0"></path>
                                         </svg>
-                                        <img src="/images/products/phone-image/14.webp" alt="iphone 16"
+                                        <img src={`${import.meta.env.BASE_URL}/images/products/phone-image/14.webp`} alt="iphone 16"
                                              className="object-cover rounded-lg blur-sm"/>
                                     </div>
                                 </div>
@@ -528,7 +528,7 @@ function ProductPage(props) {
                         <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z" clipRule="evenodd" />
                     </svg>
                 </LoginPopup>}
-            {/* ! ================== ! Notification ! ================== ! */}
+            {/* ! ================== ! Notifications ! ================== ! */}
             {isOpenNotification && notificatioStatus && (<Notification title="موفق" message="پبام شما با موفقیت ارسال شد" isOpenNotification={isOpenNotification} setIsOpenNotification={setIsOpenNotification}  IconComponent={() => <DynamicIcon name="tickCircle" />} />)}
             {isOpenNotification && !notificatioStatus && (<Notification title="خطا" message="لطفا دوباره تلاش کنید" isOpenNotification={isOpenNotification} setIsOpenNotification={setIsOpenNotification}  IconComponent={() => <DynamicIcon name="closeCircle" />} />)}
         </section>
