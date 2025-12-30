@@ -52,7 +52,7 @@ npm run dev
 <br/>
 <br/>
 
-<h2>Demo Images :</h2>
+<h2>📷 Demo Images :</h2>
 
 ![Demo 1](./public/demo/1.png)
 <br/>
