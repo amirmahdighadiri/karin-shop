@@ -52,3 +52,6 @@ npm run dev
 <br/>
 <br/>
 
+<h2>Demo Images :</h2>
+
+<img src="/karin-shop/public/demo/1.png" />
