@@ -31,7 +31,7 @@ const reducer = (state, action) => {
     }
 }
 
-function Input({id,type, value,validations,onInputChange,placeHolder,errorText,resetInput , textColor , IconComponent , clickEvent}) {
+function Input({id,type, value,validations,onInputChange,placeHolder,errorText,resetInput , textColor , IconComponent , clickEvent,submitButton}) {
 
     const [input, dispatch] = useReducer(reducer, {
         value: "",
@@ -94,7 +94,7 @@ function Input({id,type, value,validations,onInputChange,placeHolder,errorText,r
             {IconComponent && <button type="button" className="absolute left-3 top-1/2 -translate-y-1/2 my-auto text-gray-400 cursor-pointer outline-none" onClick={clickHandler}>
                  <IconComponent />
             </button>}
-            {!IconComponent && <button type="button" className="absolute left-3 top-1/2 -translate-y-1/2 my-auto text-zinc-100 bg-blue-500 px-3 py-1 rounded-lg text-sm cursor-pointer outline-none" onClick={clickHandler}>
+            {!IconComponent && submitButton && <button type="button" className="absolute left-3 top-1/2 -translate-y-1/2 my-auto text-zinc-100 bg-blue-500 px-3 py-1 rounded-lg text-sm cursor-pointer outline-none" onClick={clickHandler}>
                 ثبت
             </button>}
         </div>
